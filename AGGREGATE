@@ -1,0 +1,17 @@
+List of exercises for Aggregate Functions
+
+1.	Create aggregate functions such as count, min, max on customer relation phone number attribute
+2.	Find the sum, average, Min and Max account balance from account relation
+3.	Find the average account balance at each branch using groupby where average account balance is greater than Rs. 5000
+4.	Find sum, avg, min and max from account relation for the account type other than ‘Savings
+5.	Find sum, avg, min and max from account relation for the account status is ‘in-active’
+6.	Find distinct count and count for transaction relation whose transactiontype is ‘Deposit’
+7.	 Find sum, avg, min and max from transaction whose transaction amount is greater than 5000
+8.	Find sum, avg, min and max from loan relation whose loan amount <50000 and term is less than 24months
+9.	 Find the average loan amount >20000 for each loan type using groupby and having clause
+10.	Find sum, avg, min and max from loan payment relation whose principal amount is less than 50000 and interest amount is less than 5000
+11.	 Find sum and avg paid amount from loan payment relation whose paymentscheduleddate is equal to paid date
+12.	 Find count, sum, avg from transaction relation whose transactiondate is greater than 01-01-2020 and less than 31-12-2023
+13.	 Find sum and average for branch relation groupby branchname and having branchcode >5000
+14.	Find count of records from customer relation whose customer last name is ‘RAJ’ and phone number starts with 6.
+15.	 Find all distinct and non-distinct customers whose DOB is between      01-01-1974 to 12-12-1990
