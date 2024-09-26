@@ -1,0 +1,1563 @@
+List of exercises for nested sub query, set and join operation
+
+1.Display all account no, branch name and branch city
+2.Find the names of all customers who havent taken loans
+3.Find customer details whose accno ends with ‘147’
+4.Find all transactions whose accno between two numbers
+5.Find all records from depositor table but not having records in borrower table
+6.Find customer details for which loan number between two values
+7.Find branch details for which loan is taken from certain branchid
+8.Find all account details whose  transaction type is ‘Deposit’ and account no greater than some value and less than some value
+9.Find natural join on banking database
+10.Find inner join on banking database
+11.Find customer and branch details along with sum, avg, min and max from loan relation whose loan amount <50000 
+12. Find customer details for the average loan amount >40000 for each loan type using groupby and having clause
+13.Find sum, avg, min and max from loan payment relation whose principal amount is less than 50000 and interest amount is less than 5000
+14. Find sum and avg paid amount from loan payment relation whose paymentscheduleddate is equal to paid date
+15. Find all account details along with count, sum, avg from transaction relation whose transactiondate is greater than 01-01-2022 and less than 31-11-2024
+16. Find outer join , left outer join and right outer join on banking database      relations
+17. Find union and union all of two relations in banking database to display without duplicates and with duplicates
+18. Find intersection operation on two relations of banking database
+19.Find difference operation on two relations on banking database
+20.Find Cartesian product operation on two relations on banking database
+
+Microsoft Windows [Version 10.0.22631.4169]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\student>sqlplus
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Thu Sep 26 13:13:29 2024
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: it2023506070@orcl
+Enter password:
+Last Successful login time: Fri Sep 20 2024 01:15:29 +05:30
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS
+---------- ------------------------- --------- ---------
+AMOUNT_STATUS                                         BALANCE BRANCH_CODE
+-------------------------------------------------- ---------- -----------
+    AMOUNT
+----------
+      1000 savings                   01-JAN-01 31-DEC-24
+active                                                 202000           1
+
+
+      1001 checking                  02-FEB-02 30-NOV-23
+inactive                                                 -980           2
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS
+---------- ------------------------- --------- ---------
+AMOUNT_STATUS                                         BALANCE BRANCH_CODE
+-------------------------------------------------- ---------- -----------
+    AMOUNT
+----------
+
+      1002 savings                   03-MAR-03 29-OCT-22
+active                                                   2200
+
+
+      1003 checking                  04-APR-04 28-NOV-21
+inactive                                                 1000           3
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS
+---------- ------------------------- --------- ---------
+AMOUNT_STATUS                                         BALANCE BRANCH_CODE
+-------------------------------------------------- ---------- -----------
+    AMOUNT
+----------
+
+
+      1004 savings                   05-MAY-03 27-SEP-20
+active                                                   3000           4
+
+
+      1005 checking                  06-JUN-02 26-AUG-19
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS
+---------- ------------------------- --------- ---------
+AMOUNT_STATUS                                         BALANCE BRANCH_CODE
+-------------------------------------------------- ---------- -----------
+    AMOUNT
+----------
+inactive                                                 9000           5
+
+
+      1006 savings                   07-JUL-01 25-JUL-18
+active                                                   3500           6
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS
+---------- ------------------------- --------- ---------
+AMOUNT_STATUS                                         BALANCE BRANCH_CODE
+-------------------------------------------------- ---------- -----------
+    AMOUNT
+----------
+      1007 checking                  08-AUG-00 24-JUN-17
+inactive                                                29000           7
+
+
+      1008 savings                   09-SEP-99 23-MAY-16
+active                                                   5500           6
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS
+---------- ------------------------- --------- ---------
+AMOUNT_STATUS                                         BALANCE BRANCH_CODE
+-------------------------------------------------- ---------- -----------
+    AMOUNT
+----------
+
+      1009 checking                  10-OCT-98 22-APR-15
+inactive                                              -921.01           5
+
+
+      2000 savings                   11-NOV-97 21-MAR-14
+active                                                9800.99           4
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS
+---------- ------------------------- --------- ---------
+AMOUNT_STATUS                                         BALANCE BRANCH_CODE
+-------------------------------------------------- ---------- -----------
+    AMOUNT
+----------
+
+
+      2001 checking                  12-DEC-96 20-FEB-13
+inactive                                              -199.01           1
+
+
+      2002 savings                   11-JAN-95 19-JAN-12
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS
+---------- ------------------------- --------- ---------
+AMOUNT_STATUS                                         BALANCE BRANCH_CODE
+-------------------------------------------------- ---------- -----------
+    AMOUNT
+----------
+active                                                2887.99           8
+
+
+      2003 savings                   10-FEB-94 18-DEC-11
+inactive                                             90700.99           8
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS
+---------- ------------------------- --------- ---------
+AMOUNT_STATUS                                         BALANCE BRANCH_CODE
+-------------------------------------------------- ---------- -----------
+    AMOUNT
+----------
+      2004 savings                   10-FEB-94 18-DEC-11
+inactive                                             90700.99           9
+
+
+      2005 checking                  10-FEB-94 18-DEC-11
+closed                                                  19000           9
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS
+---------- ------------------------- --------- ---------
+AMOUNT_STATUS                                         BALANCE BRANCH_CODE
+-------------------------------------------------- ---------- -----------
+    AMOUNT
+----------
+
+
+16 rows selected.
+
+SQL> set linesize 150;
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+      1000 savings                   01-JAN-01 31-DEC-24 active                                                 202000           1
+      1001 checking                  02-FEB-02 30-NOV-23 inactive                                                 -980           2
+      1002 savings                   03-MAR-03 29-OCT-22 active                                                   2200
+      1003 checking                  04-APR-04 28-NOV-21 inactive                                                 1000           3
+      1004 savings                   05-MAY-03 27-SEP-20 active                                                   3000           4
+      1005 checking                  06-JUN-02 26-AUG-19 inactive                                                 9000           5
+      1006 savings                   07-JUL-01 25-JUL-18 active                                                   3500           6
+      1007 checking                  08-AUG-00 24-JUN-17 inactive                                                29000           7
+      1008 savings                   09-SEP-99 23-MAY-16 active                                                   5500           6
+      1009 checking                  10-OCT-98 22-APR-15 inactive                                              -921.01           5
+      2000 savings                   11-NOV-97 21-MAR-14 active                                                9800.99           4
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+      2001 checking                  12-DEC-96 20-FEB-13 inactive                                              -199.01           1
+      2002 savings                   11-JAN-95 19-JAN-12 active                                                2887.99           8
+      2003 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           8
+      2004 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           9
+      2005 checking                  10-FEB-94 18-DEC-11 closed                                                  19000           9
+
+16 rows selected.
+
+SQL> set autocommit on;
+SQL> select * from customer;
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION           DOB          BALANCE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ----------
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student              07-APR-06    40125.7
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer         05-AUG-05   10115.71
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner           19-DEC-79    10078.9
+op900                           Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor            08-SEP-92    90000.9
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor            26-OCT-75      25100
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79      25000
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist         06-SEP-98   100000.6
+
+9 rows selected.
+
+SQL> select * from branch;
+
+BRANCH_ID            BRANCH_NAME          BRANCH_CODE          ADDRESS              PHONE_NUMBER     AMOUNT
+-------------------- -------------------- -------------------- -------------------- ------------ ----------
+C1000                Avadi                1                    No:24__lazar nagar     9876543210
+C1001                Ambattur             2                    No:25__shenoy nagar    1122334455
+C1002                Annanur              3                    No:26__ram nagar       2233445566
+D20012               Mambalam             1010                 No:39__kk nagar        1112223334
+D20013               Annanur              2000                 No:36__kalam nagar     2233344455
+D20014               Ambattur             2001                 No:37__sri nagar       3334445556
+D20015               Avadi                2002                 No:38__Ok nagar        3444555666
+D20016                                    2003                                        9999999999
+
+8 rows selected.
+
+SQL> alter table account add(customer_id varchar(20), branch_id varchar(20));
+
+Table altered.
+
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      1000 savings                   01-JAN-01 31-DEC-24 active                                                 202000           1
+
+
+      1001 checking                  02-FEB-02 30-NOV-23 inactive                                                 -980           2
+
+
+      1002 savings                   03-MAR-03 29-OCT-22 active                                                   2200
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      1003 checking                  04-APR-04 28-NOV-21 inactive                                                 1000           3
+
+
+      1004 savings                   05-MAY-03 27-SEP-20 active                                                   3000           4
+
+
+      1005 checking                  06-JUN-02 26-AUG-19 inactive                                                 9000           5
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      1006 savings                   07-JUL-01 25-JUL-18 active                                                   3500           6
+
+
+      1007 checking                  08-AUG-00 24-JUN-17 inactive                                                29000           7
+
+
+      1008 savings                   09-SEP-99 23-MAY-16 active                                                   5500           6
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      1009 checking                  10-OCT-98 22-APR-15 inactive                                              -921.01           5
+
+
+      2000 savings                   11-NOV-97 21-MAR-14 active                                                9800.99           4
+
+
+      2001 checking                  12-DEC-96 20-FEB-13 inactive                                              -199.01           1
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      2002 savings                   11-JAN-95 19-JAN-12 active                                                2887.99           8
+
+
+      2003 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           8
+
+
+      2004 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           9
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      2005 checking                  10-FEB-94 18-DEC-11 closed                                                  19000           9
+
+
+
+16 rows selected.
+
+SQL> set linsize 200;
+SP2-0158: unknown SET option "linsize"
+SQL> set linesize 200;
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID          BRANCH_ID
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+      1000 savings                   01-JAN-01 31-DEC-24 active                                                 202000           1
+      1001 checking                  02-FEB-02 30-NOV-23 inactive                                                 -980           2
+      1002 savings                   03-MAR-03 29-OCT-22 active                                                   2200
+      1003 checking                  04-APR-04 28-NOV-21 inactive                                                 1000           3
+      1004 savings                   05-MAY-03 27-SEP-20 active                                                   3000           4
+      1005 checking                  06-JUN-02 26-AUG-19 inactive                                                 9000           5
+      1006 savings                   07-JUL-01 25-JUL-18 active                                                   3500           6
+      1007 checking                  08-AUG-00 24-JUN-17 inactive                                                29000           7
+      1008 savings                   09-SEP-99 23-MAY-16 active                                                   5500           6
+      1009 checking                  10-OCT-98 22-APR-15 inactive                                              -921.01           5
+      2000 savings                   11-NOV-97 21-MAR-14 active                                                9800.99           4
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID          BRANCH_ID
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+      2001 checking                  12-DEC-96 20-FEB-13 inactive                                              -199.01           1
+      2002 savings                   11-JAN-95 19-JAN-12 active                                                2887.99           8
+      2003 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           8
+      2004 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           9
+      2005 checking                  10-FEB-94 18-DEC-11 closed                                                  19000           9
+
+16 rows selected.
+
+SQL> set linesize 150;
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      1000 savings                   01-JAN-01 31-DEC-24 active                                                 202000           1
+
+
+      1001 checking                  02-FEB-02 30-NOV-23 inactive                                                 -980           2
+
+
+      1002 savings                   03-MAR-03 29-OCT-22 active                                                   2200
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      1003 checking                  04-APR-04 28-NOV-21 inactive                                                 1000           3
+
+
+      1004 savings                   05-MAY-03 27-SEP-20 active                                                   3000           4
+
+
+      1005 checking                  06-JUN-02 26-AUG-19 inactive                                                 9000           5
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      1006 savings                   07-JUL-01 25-JUL-18 active                                                   3500           6
+
+
+      1007 checking                  08-AUG-00 24-JUN-17 inactive                                                29000           7
+
+
+      1008 savings                   09-SEP-99 23-MAY-16 active                                                   5500           6
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      1009 checking                  10-OCT-98 22-APR-15 inactive                                              -921.01           5
+
+
+      2000 savings                   11-NOV-97 21-MAR-14 active                                                9800.99           4
+
+
+      2001 checking                  12-DEC-96 20-FEB-13 inactive                                              -199.01           1
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      2002 savings                   11-JAN-95 19-JAN-12 active                                                2887.99           8
+
+
+      2003 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           8
+
+
+      2004 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           9
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      2005 checking                  10-FEB-94 18-DEC-11 closed                                                  19000           9
+
+
+
+16 rows selected.
+
+SQL> set linesize 300;
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID    BRANCH_ID
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+      1000 savings                   01-JAN-01 31-DEC-24 active                                                 202000           1
+      1001 checking                  02-FEB-02 30-NOV-23 inactive                                                 -980           2
+      1002 savings                   03-MAR-03 29-OCT-22 active                                                   2200
+      1003 checking                  04-APR-04 28-NOV-21 inactive                                                 1000           3
+      1004 savings                   05-MAY-03 27-SEP-20 active                                                   3000           4
+      1005 checking                  06-JUN-02 26-AUG-19 inactive                                                 9000           5
+      1006 savings                   07-JUL-01 25-JUL-18 active                                                   3500           6
+      1007 checking                  08-AUG-00 24-JUN-17 inactive                                                29000           7
+      1008 savings                   09-SEP-99 23-MAY-16 active                                                   5500           6
+      1009 checking                  10-OCT-98 22-APR-15 inactive                                              -921.01           5
+      2000 savings                   11-NOV-97 21-MAR-14 active                                                9800.99           4
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID    BRANCH_ID
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+      2001 checking                  12-DEC-96 20-FEB-13 inactive                                              -199.01           1
+      2002 savings                   11-JAN-95 19-JAN-12 active                                                2887.99           8
+      2003 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           8
+      2004 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           9
+      2005 checking                  10-FEB-94 18-DEC-11 closed                                                  19000           9
+
+16 rows selected.
+
+SQL> set linesize 1000;
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID    BRANCH_ID
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+      1000 savings                   01-JAN-01 31-DEC-24 active                                                 202000           1
+      1001 checking                  02-FEB-02 30-NOV-23 inactive                                                 -980           2
+      1002 savings                   03-MAR-03 29-OCT-22 active                                                   2200
+      1003 checking                  04-APR-04 28-NOV-21 inactive                                                 1000           3
+      1004 savings                   05-MAY-03 27-SEP-20 active                                                   3000           4
+      1005 checking                  06-JUN-02 26-AUG-19 inactive                                                 9000           5
+      1006 savings                   07-JUL-01 25-JUL-18 active                                                   3500           6
+      1007 checking                  08-AUG-00 24-JUN-17 inactive                                                29000           7
+      1008 savings                   09-SEP-99 23-MAY-16 active                                                   5500           6
+      1009 checking                  10-OCT-98 22-APR-15 inactive                                              -921.01           5
+      2000 savings                   11-NOV-97 21-MAR-14 active                                                9800.99           4
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID    BRANCH_ID
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+      2001 checking                  12-DEC-96 20-FEB-13 inactive                                              -199.01           1
+      2002 savings                   11-JAN-95 19-JAN-12 active                                                2887.99           8
+      2003 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           8
+      2004 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           9
+      2005 checking                  10-FEB-94 18-DEC-11 closed                                                  19000           9
+
+16 rows selected.
+
+SQL> set linesize 150;
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      1000 savings                   01-JAN-01 31-DEC-24 active                                                 202000           1
+
+
+      1001 checking                  02-FEB-02 30-NOV-23 inactive                                                 -980           2
+
+
+      1002 savings                   03-MAR-03 29-OCT-22 active                                                   2200
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      1003 checking                  04-APR-04 28-NOV-21 inactive                                                 1000           3
+
+
+      1004 savings                   05-MAY-03 27-SEP-20 active                                                   3000           4
+
+
+      1005 checking                  06-JUN-02 26-AUG-19 inactive                                                 9000           5
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      1006 savings                   07-JUL-01 25-JUL-18 active                                                   3500           6
+
+
+      1007 checking                  08-AUG-00 24-JUN-17 inactive                                                29000           7
+
+
+      1008 savings                   09-SEP-99 23-MAY-16 active                                                   5500           6
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      1009 checking                  10-OCT-98 22-APR-15 inactive                                              -921.01           5
+
+
+      2000 savings                   11-NOV-97 21-MAR-14 active                                                9800.99           4
+
+
+      2001 checking                  12-DEC-96 20-FEB-13 inactive                                              -199.01           1
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      2002 savings                   11-JAN-95 19-JAN-12 active                                                2887.99           8
+
+
+      2003 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           8
+
+
+      2004 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           9
+
+
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ----------
+CUSTOMER_ID          BRANCH_ID
+-------------------- --------------------
+      2005 checking                  10-FEB-94 18-DEC-11 closed                                                  19000           9
+
+
+
+16 rows selected.
+
+SQL> set linesize 200;
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID          BRANCH_ID
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+      1000 savings                   01-JAN-01 31-DEC-24 active                                                 202000           1
+      1001 checking                  02-FEB-02 30-NOV-23 inactive                                                 -980           2
+      1002 savings                   03-MAR-03 29-OCT-22 active                                                   2200
+      1003 checking                  04-APR-04 28-NOV-21 inactive                                                 1000           3
+      1004 savings                   05-MAY-03 27-SEP-20 active                                                   3000           4
+      1005 checking                  06-JUN-02 26-AUG-19 inactive                                                 9000           5
+      1006 savings                   07-JUL-01 25-JUL-18 active                                                   3500           6
+      1007 checking                  08-AUG-00 24-JUN-17 inactive                                                29000           7
+      1008 savings                   09-SEP-99 23-MAY-16 active                                                   5500           6
+      1009 checking                  10-OCT-98 22-APR-15 inactive                                              -921.01           5
+      2000 savings                   11-NOV-97 21-MAR-14 active                                                9800.99           4
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID          BRANCH_ID
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+      2001 checking                  12-DEC-96 20-FEB-13 inactive                                              -199.01           1
+      2002 savings                   11-JAN-95 19-JAN-12 active                                                2887.99           8
+      2003 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           8
+      2004 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           9
+      2005 checking                  10-FEB-94 18-DEC-11 closed                                                  19000           9
+
+16 rows selected.
+
+SQL> update account set customer_id='c1110' and branch_id='c1000' where account_no=1000;
+update account set customer_id='c1110' and branch_id='c1000' where account_no=1000
+                                       *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> update account set customer_id='c1110',branch_id='c1000' where account_no=1000;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='ds991',branch_id='c1001' where account_no=2005;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='34br',branch_id='c1002' where account_no=1001;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='ds888',branch_id='D20012' where account_no=2004;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='op900',branch_id='D20013' where account_no=1002;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='dl909',branch_id='D20014' where account_no=2003;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='dsm90',branch_id='D20015' where account_no=2002;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='dm889',branch_id='D20016' where account_no=2001;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='in064',branch_id='D20017' where account_no=2000;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='in065',branch_id='D20018' where account_no=1003;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='in066',branch_id='D20019' where account_no=1004;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='in067',branch_id='D20020' where account_no=1005;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='in068',branch_id='D20021' where account_no=1006;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='in069',branch_id='D20022' where account_no=1007;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='in070',branch_id='D20023' where account_no=1008;
+
+1 row updated.
+
+Commit complete.
+SQL> update account set customer_id='in071',branch_id='D20024' where account_no=1009;
+
+1 row updated.
+
+Commit complete.
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID          BRANCH_ID
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+      1000 savings                   01-JAN-01 31-DEC-24 active                                                 202000           1            c1110                c1000
+      1001 checking                  02-FEB-02 30-NOV-23 inactive                                                 -980           2            34br                 c1002
+      1002 savings                   03-MAR-03 29-OCT-22 active                                                   2200                        op900                D20013
+      1003 checking                  04-APR-04 28-NOV-21 inactive                                                 1000           3            in065                D20018
+      1004 savings                   05-MAY-03 27-SEP-20 active                                                   3000           4            in066                D20019
+      1005 checking                  06-JUN-02 26-AUG-19 inactive                                                 9000           5            in067                D20020
+      1006 savings                   07-JUL-01 25-JUL-18 active                                                   3500           6            in068                D20021
+      1007 checking                  08-AUG-00 24-JUN-17 inactive                                                29000           7            in069                D20022
+      1008 savings                   09-SEP-99 23-MAY-16 active                                                   5500           6            in070                D20023
+      1009 checking                  10-OCT-98 22-APR-15 inactive                                              -921.01           5            in071                D20024
+      2000 savings                   11-NOV-97 21-MAR-14 active                                                9800.99           4            in064                D20017
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID          BRANCH_ID
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+      2001 checking                  12-DEC-96 20-FEB-13 inactive                                              -199.01           1            dm889                D20016
+      2002 savings                   11-JAN-95 19-JAN-12 active                                                2887.99           8            dsm90                D20015
+      2003 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           8            dl909                D20014
+      2004 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           9            ds888                D20012
+      2005 checking                  10-FEB-94 18-DEC-11 closed                                                  19000           9            ds991                c1001
+
+16 rows selected.
+
+SQL> select * from transaction;
+
+TRANSACTION_ID       TRANSACTION_TYPE     TRANSACTI     AMOUNT
+-------------------- -------------------- --------- ----------
+A1000                deposit              05-JAN-06      65000
+A1001                withdrawl            06-FEB-07      75000
+A1002                transfer             07-MAR-08      55000
+A1003                transfer             08-APR-09      85000
+A1004                withdrawl            09-MAY-10      75000
+A1005                deposit              10-JUN-11      75000
+A1006                deposit              11-JUL-12      85000
+B2003                withdrawl            18-FEB-19      85000
+B2004                deposit              19-MAR-20      75000
+B2005                transfer             20-APR-21      80000
+
+10 rows selected.
+
+SQL> alter table transaction add(account_no number(10));
+
+Table altered.
+
+SQL> update transaction set account_no=1000 where transaction_id='A1000';
+
+1 row updated.
+
+Commit complete.
+SQL> update transaction set account_no=1001 where transaction_id='A1001';
+
+1 row updated.
+
+Commit complete.
+SQL> update transaction set account_no=1002 where transaction_id='A1002';
+
+1 row updated.
+
+Commit complete.
+SQL> update transaction set account_no=1003 where transaction_id='A1003';
+
+1 row updated.
+
+Commit complete.
+SQL> update transaction set account_no=1004 where transaction_id='A1004';
+
+1 row updated.
+
+Commit complete.
+SQL> update transaction set account_no=1005 where transaction_id='A1005';
+
+1 row updated.
+
+Commit complete.
+SQL> update transaction set account_no=1006 where transaction_id='A1006';
+
+1 row updated.
+
+Commit complete.
+SQL> update transaction set account_no=1007 where transaction_id='B2003';
+
+1 row updated.
+
+Commit complete.
+SQL> update transaction set account_no=1008 where transaction_id='B2004';
+
+1 row updated.
+
+Commit complete.
+SQL> update transaction set account_no=1009 where transaction_id='B2005';
+
+1 row updated.
+
+Commit complete.
+SQL> select * from transaction;
+
+TRANSACTION_ID       TRANSACTION_TYPE     TRANSACTI     AMOUNT ACCOUNT_NO
+-------------------- -------------------- --------- ---------- ----------
+A1000                deposit              05-JAN-06      65000       1000
+A1001                withdrawl            06-FEB-07      75000       1001
+A1002                transfer             07-MAR-08      55000       1002
+A1003                transfer             08-APR-09      85000       1003
+A1004                withdrawl            09-MAY-10      75000       1004
+A1005                deposit              10-JUN-11      75000       1005
+A1006                deposit              11-JUL-12      85000       1006
+B2003                withdrawl            18-FEB-19      85000       1007
+B2004                deposit              19-MAR-20      75000       1008
+B2005                transfer             20-APR-21      80000       1009
+
+10 rows selected.
+
+SQL> select * from loan;
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS
+----------- -------------------- ----------- -------------------- -------------------- --------- --------- --------------------
+          1 personal                  105000 12%                  24                   06-APR-06 07-MAY-07 active
+          2 markage                    10000 2%                   48                   07-MAY-07 08-JUN-08 cancelled
+          3 auto                        1000 3%                   48                   08-JUN-08 09-JUL-09 inactive
+          4 auto                        1000 3%                   48                   08-JUN-08 09-JUL-09 closed
+          5 personal                   25000 12%                  48                   08-JAN-10 09-JUL-10 closed
+          6 personal                   25000 12%                  7                    08-JAN-10 09-JUL-11 inactive
+          7 markage                    20200 1%                   5                    07-JAN-05 09-JUL-05 closed
+          8 markage                    20200 1%                   5                    07-JAN-05 09-JUL-05 closed
+          9 personal                  105000 12%                  10                   06-APR-06 07-MAY-07 active
+         10 personal                  105000 12%                  10                   06-APR-06 07-MAY-07 active
+         11 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS
+----------- -------------------- ----------- -------------------- -------------------- --------- --------- --------------------
+         12 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive
+         13 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive
+         14 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive
+         15 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive
+         16 home                      101000 1%                   10                   06-APR-06 07-MAY-07 active
+
+16 rows selected.
+
+SQL> alter table loan add(customer_id varchar(20), branch_id varchar(20));
+
+Table altered.
+
+SQL> update loan set customer_id='c110',branch_id='c1000' where loan_number=1;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='ds991',branch_id='c1001' where loan_number=2;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='34br',branch_id='c1002' where loan_number=3;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='ds888',branch_id='c1003' where loan_number=4;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='op900',branch_id='D20012' where loan_number=5;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='dl909',branch_id='D20013' where loan_number=6;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='dsm90',branch_id='D20014' where loan_number=7;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='dm889',branch_id='D20015' where loan_number=8;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='in064',branch_id='D20016' where loan_number=9;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='in065',branch_id='D20017' where loan_number=10;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='in066',branch_id='D20018' where loan_number=11;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='in067',branch_id='D20019' where loan_number=12;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='in068',branch_id='D20020' where loan_number=13;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='in069',branch_id='D20021' where loan_number=14;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='in070',branch_id='D20022' where loan_number=15;
+
+1 row updated.
+
+Commit complete.
+SQL> update loan set customer_id='in071',branch_id='D20023' where loan_number=16;
+
+1 row updated.
+
+Commit complete.
+SQL> create table depositor;
+create table depositor
+                     *
+ERROR at line 1:
+ORA-00906: missing left parenthesis
+
+
+SQL> create table depositor(customer_id varchar2(20), account_no varchar2(20), foreign key(customer_id) references customer(customer_id), foreign key(account_no) references account(account_no));
+create table depositor(customer_id varchar2(20), account_no varchar2(20), foreign key(customer_id) references customer(customer_id), foreign key(account_no) references account(account_no))
+                                                                                                                                                 *
+ERROR at line 1:
+ORA-02267: column type incompatible with referenced column type
+
+
+SQL> create table depositor(customer_id varchar2(20), account_no number(10), foreign key(customer_id) references customer(customer_id), foreign key(account_no) references account(account_no));
+create table depositor(customer_id varchar2(20), account_no number(10), foreign key(customer_id) references customer(customer_id), foreign key(account_no) references account(account_no))
+                                                                                                                                                                              *
+ERROR at line 1:
+ORA-02270: no matching unique or primary key for this column-list
+
+
+SQL> alter table account modify(account_no number(10) primary key));
+alter table account modify(account_no number(10) primary key))
+                                                             *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option
+
+
+SQL> desc account;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ACCOUNT_NO                                                                                                                 NUMBER(20)
+ ACCOUNT_TYPE                                                                                                               VARCHAR2(25)
+ DATE_OPENED                                                                                                                DATE
+ DATE_CLOSED                                                                                                                DATE
+ AMOUNT_STATUS                                                                                                              VARCHAR2(50)
+ BALANCE                                                                                                                    NUMBER(10,2)
+ BRANCH_CODE                                                                                                                NUMBER(10)
+ AMOUNT                                                                                                                     NUMBER(10,2)
+ CUSTOMER_ID                                                                                                                VARCHAR2(20)
+ BRANCH_ID                                                                                                                  VARCHAR2(20)
+
+SQL> alter table account modify(account_no number(10) primary key);
+alter table account modify(account_no number(10) primary key)
+                           *
+ERROR at line 1:
+ORA-01440: column to be modified must be empty to decrease precision or scale
+
+
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID          BRANCH_ID
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+      1000 savings                   01-JAN-01 31-DEC-24 active                                                 202000           1            c1110                c1000
+      1001 checking                  02-FEB-02 30-NOV-23 inactive                                                 -980           2            34br                 c1002
+      1002 savings                   03-MAR-03 29-OCT-22 active                                                   2200                        op900                D20013
+      1003 checking                  04-APR-04 28-NOV-21 inactive                                                 1000           3            in065                D20018
+      1004 savings                   05-MAY-03 27-SEP-20 active                                                   3000           4            in066                D20019
+      1005 checking                  06-JUN-02 26-AUG-19 inactive                                                 9000           5            in067                D20020
+      1006 savings                   07-JUL-01 25-JUL-18 active                                                   3500           6            in068                D20021
+      1007 checking                  08-AUG-00 24-JUN-17 inactive                                                29000           7            in069                D20022
+      1008 savings                   09-SEP-99 23-MAY-16 active                                                   5500           6            in070                D20023
+      1009 checking                  10-OCT-98 22-APR-15 inactive                                              -921.01           5            in071                D20024
+      2000 savings                   11-NOV-97 21-MAR-14 active                                                9800.99           4            in064                D20017
+
+ACCOUNT_NO ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID          BRANCH_ID
+---------- ------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+      2001 checking                  12-DEC-96 20-FEB-13 inactive                                              -199.01           1            dm889                D20016
+      2002 savings                   11-JAN-95 19-JAN-12 active                                                2887.99           8            dsm90                D20015
+      2003 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           8            dl909                D20014
+      2004 savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           9            ds888                D20012
+      2005 checking                  10-FEB-94 18-DEC-11 closed                                                  19000           9            ds991                c1001
+
+16 rows selected.
+
+SQL> alter table account drop column account_no;
+
+Table altered.
+
+SQL> alter table account add(account_no number(10) primary key);
+alter table account add(account_no number(10) primary key)
+            *
+ERROR at line 1:
+ORA-01758: table must be empty to add mandatory (NOT NULL) column
+
+
+SQL> create table  borrower(customer_id varchar2(20), loan_no number(10), foreign key(customer_id) references customer(customer_id), foreign key(loan_no) references loan(loan_no));
+create table  borrower(customer_id varchar2(20), loan_no number(10), foreign key(customer_id) references customer(customer_id), foreign key(loan_no) references loan(loan_no))
+                                                                                                                                                                     *
+ERROR at line 1:
+ORA-00904: "LOAN_NO": invalid identifier
+
+
+SQL> create table  borrower(customer_id varchar2(20), loan_number number(10), foreign key(customer_id) references customer(customer_id), foreign key(loan_number) references loan(loan_number));
+
+Table created.
+
+SQL> select * from borrower;
+
+no rows selected
+
+SQL> insert into borrower('c1110',1);
+insert into borrower('c1110',1)
+                     *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> insert into borrower values('c1110',1);
+
+1 row created.
+
+Commit complete.
+SQL> insert into borrower values('ds991',2);
+insert into borrower values('ds991',2)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (IT2023506070.SYS_C0013292) violated - parent key not found
+
+
+SQL> select * from customer;
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION           DOB          BALANCE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ----------
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student              07-APR-06    40125.7
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer         05-AUG-05   10115.71
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner           19-DEC-79    10078.9
+op900                           Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor            08-SEP-92    90000.9
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor            26-OCT-75      25100
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79      25000
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist         06-SEP-98   100000.6
+
+9 rows selected.
+
+SQL> insert into borrower values('da991',2);
+
+1 row created.
+
+Commit complete.
+SQL> insert into borrower values('34br',3);
+
+1 row created.
+
+Commit complete.
+SQL> insert into borrower values('da888',4);
+
+1 row created.
+
+Commit complete.
+SQL> insert into borrower values('op900',5);
+
+1 row created.
+
+Commit complete.
+SQL> insert into borrower values('dl909',6);
+
+1 row created.
+
+Commit complete.
+SQL> insert into borrower values('dsm90',7);
+
+1 row created.
+
+Commit complete.
+SQL> insert into borrower values('lm889',8);
+
+1 row created.
+
+Commit complete.
+SQL> insert into borrower values('in064',9);
+
+1 row created.
+
+Commit complete.
+SQL> select * from account;
+
+ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID          BRANCH_ID
+------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+savings                   01-JAN-01 31-DEC-24 active                                                 202000           1            c1110                c1000
+checking                  02-FEB-02 30-NOV-23 inactive                                                 -980           2            34br                 c1002
+savings                   03-MAR-03 29-OCT-22 active                                                   2200                        op900                D20013
+checking                  04-APR-04 28-NOV-21 inactive                                                 1000           3            in065                D20018
+savings                   05-MAY-03 27-SEP-20 active                                                   3000           4            in066                D20019
+checking                  06-JUN-02 26-AUG-19 inactive                                                 9000           5            in067                D20020
+savings                   07-JUL-01 25-JUL-18 active                                                   3500           6            in068                D20021
+checking                  08-AUG-00 24-JUN-17 inactive                                                29000           7            in069                D20022
+savings                   09-SEP-99 23-MAY-16 active                                                   5500           6            in070                D20023
+checking                  10-OCT-98 22-APR-15 inactive                                              -921.01           5            in071                D20024
+savings                   11-NOV-97 21-MAR-14 active                                                9800.99           4            in064                D20017
+
+ACCOUNT_TYPE              DATE_OPEN DATE_CLOS AMOUNT_STATUS                                         BALANCE BRANCH_CODE     AMOUNT CUSTOMER_ID          BRANCH_ID
+------------------------- --------- --------- -------------------------------------------------- ---------- ----------- ---------- -------------------- --------------------
+checking                  12-DEC-96 20-FEB-13 inactive                                              -199.01           1            dm889                D20016
+savings                   11-JAN-95 19-JAN-12 active                                                2887.99           8            dsm90                D20015
+savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           8            dl909                D20014
+savings                   10-FEB-94 18-DEC-11 inactive                                             90700.99           9            ds888                D20012
+checking                  10-FEB-94 18-DEC-11 closed                                                  19000           9            ds991                c1001
+
+16 rows selected.
+
+SQL> drop table account;
+
+Table dropped.
+SQL> create table account(account_no number(10) primary key, account_type varchar2(20), date_open date, date_close date, amount_status varchar2(20), balance number(10), branch_code number(10), customer_id varchar2(20), branch_id varchar2(20));
+
+Table created.
+
+SQL> insert into account values(1000,'savings',
+  2  '01-jan-01','31-dec-24','active',202000,1,'c1110','c1000');
+
+1 row created.
+
+Commit complete.
+SQL> insert into account values(1001,'checking', '02-feb-02','30-nov-23','inactive',-980,2,'34br','c1002');
+
+1 row created.
+
+Commit complete.
+SQL> insert into account values(1002,'savings', '03-mar-03','29-oct-22','active',2200,3,'in065','D2001
+3');
+
+1 row created.
+
+Commit complete.
+SQL> insert into account values(1003,'checking', '04-apr-04','28-nov-21','inactive',1000,4,'in066','D2
+0018');
+
+1 row created.
+
+Commit complete.
+SQL> insert into account values(1004,'savings', '05-may-03','27-sep-20','active',3000,5,'in067','D2001
+9');
+
+1 row created.
+
+Commit complete.
+SQL> insert into account values(1005,'checkings', '06-jun-02','26-aug-19','inactive',9000,6,'in068','D
+20020');
+
+1 row created.
+
+Commit complete.
+SQL> insert into account values(1006,'savings', '07-jul-01','25-jul-18','active',3500,7,'in069','D2002
+1');
+
+1 row created.
+
+Commit complete.
+SQL> insert into account values(1007,'checkings', '08-aug-00','24-jun-17','inactive',29000,8,'in070','
+D20022');
+
+1 row created.
+
+Commit complete.
+SQL> insert into account values(1007,'checkings', '08-aug-00','24-jun-17','inactive',29000,9,'in071','
+D2002insert into account values(1007,'checkings', '08-aug-00','24-jun-17','inactive',29000,9,'in071','D20023');
+insert into account values(1007,'checkings', '08-aug-00','24-jun-17','inactive',29000,9,'in071','D20023')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (IT2023506070.SYS_C0013367) violated
+
+
+SQL> create table depositor(customer_id varchar2(20),account_no varchar2(20), foreign key(customer_id) references customer(customer_id), foreign key(account_no) references account(account_no));
+create table depositor(customer_id varchar2(20),account_no varchar2(20), foreign key(customer_id) references customer(customer_id), foreign key(account_no) references account(account_no))
+                                                                                                                                                *
+ERROR at line 1:
+ORA-02267: column type incompatible with referenced column type
+
+
+SQL> create table depositor(customer_id varchar2(20),account_no number(10), foreign key(customer_id) references customer(customer_id), foreign key(account_no) references account(account_no));
+
+Table created.
+
+SQL> insert into depositor values('c1110',1000);
+
+1 row created.
+
+Commit complete.
+SQL> insert into depositor values('da991',1001);
+
+1 row created.
+
+Commit complete.
+SQL> insert into depositor values('34br',1002);
+
+1 row created.
+
+Commit complete.
+SQL> insert into depositor values('da888',1003);
+
+1 row created.
+
+Commit complete.
+SQL> insert into depositor values('op900',1004);
+
+1 row created.
+
+Commit complete.
+SQL> insert into depositor values('dl909',1005);
+
+1 row created.
+
+Commit complete.
+SQL> insert into depositor values('dsm90',1006);
+
+1 row created.
+
+Commit complete.
+SQL> insert into depositor values('lm889',1007);
+
+1 row created.
+
+Commit complete.
+SQL> insert into depositor values('in064',1008);
+insert into depositor values('in064',1008)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (IT2023506070.SYS_C0013401) violated - parent key not found
+
+
+SQL> select * from customer;
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION           DOB          BALANCE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ----------
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student              07-APR-06    40125.7
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer         05-AUG-05   10115.71
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner           19-DEC-79    10078.9
+op900                           Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor            08-SEP-92    90000.9
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor            26-OCT-75      25100
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79      25000
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist         06-SEP-98   100000.6
+
+9 rows selected.
+
+SQL> insert into depositor values('in064',1009);
+insert into depositor values('in064',1009)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (IT2023506070.SYS_C0013401) violated - parent key not found
+
+
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- -------------------- --------- --------- -------------------- ---------- ----------- -------------------- --------------------
+      1000 savings              01-JAN-01 31-DEC-24 active                   202000           1 c1110                c1000
+      1001 checking             02-FEB-02 30-NOV-23 inactive                   -980           2 34br                 c1002
+      1002 savings              03-MAR-03 29-OCT-22 active                     2200           3 in065                D20013
+      1003 checking             04-APR-04 28-NOV-21 inactive                   1000           4 in066                D20018
+      1004 savings              05-MAY-03 27-SEP-20 active                     3000           5 in067                D20019
+      1005 checkings            06-JUN-02 26-AUG-19 inactive                   9000           6 in068                D20020
+      1006 savings              07-JUL-01 25-JUL-18 active                     3500           7 in069                D20021
+      1007 checkings            08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+
+8 rows selected.
+
+SQL> insert into account values(1008,'savings', '08-aug-00','24-jun-17','inactive',29000,8,'in070','D20022');
+
+1 row created.
+
+Commit complete.
+SQL> insert into depositor values('in064',1008);
+
+1 row created.
+
+Commit complete.
+SQL> select * from depositor;
+
+CUSTOMER_ID          ACCOUNT_NO
+-------------------- ----------
+c1110                      1000
+da991                      1001
+34br                       1002
+da888                      1003
+op900                      1004
+dl909                      1005
+dsm90                      1006
+lm889                      1007
+in064                      1008
+
+9 rows selected.
+
+SQL> select account_no,branch_name,address from account where account_no in (select account_no from transaction);
+select account_no,branch_name,address from account where account_no in (select account_no from transaction)
+                              *
+ERROR at line 1:
+ORA-00904: "ADDRESS": invalid identifier
+
+
+SQL> select account_no,branch_name,account_type from account where account_no in (select account_no fr
+om transaction);
+select account_no,branch_name,account_type from account where account_no in (select account_no from transaction)
+                  *
+ERROR at line 1:
+ORA-00904: "BRANCH_NAME": invalid identifier
+
+
+SQL> select account_no,branch_id,account_type from account where account_no in (select account_no from
+ transaction);
+
+ACCOUNT_NO BRANCH_ID            ACCOUNT_TYPE
+---------- -------------------- --------------------
+      1000 c1000                savings
+      1001 c1002                checking
+      1002 D20013               savings
+      1003 D20018               checking
+      1004 D20019               savings
+      1005 D20020               checkings
+      1006 D20021               savings
+      1007 D20022               checkings
+      1008 D20022               savings
+
+9 rowselect customer_name from customer where customer_id in(select customer_id from loan where loan_
+
+SQL> select customer_name from customer where customer_id in(select customer_id from loan where status
+='inactive');
+select customer_name from customer where customer_id in(select customer_id from loan where status='inactive')
+       *
+ERROR at line 1:
+ORA-00904: "CUSTOMER_NAME": invalid identifier
+
+
+SQL> select fname,mname,lname from customer where customer_id in(select customer_id from loan where st
+atus='inactive');
+
+FNAME      MNAME      LNAME
+---------- ---------- ----------
+Hari       Haran      K
+Mohammed   Asil       Mustafa
+
+SQL> update account set account_no=1147 where branch_code=1;
+update account set account_no=1147 where branch_code=1
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (IT2023506070.SYS_C0013401) violated - child record found
+
+
+SQL> update depositor set account_no=1147 where branch_code=1;
+update depositor set account_no=1147 where branch_code=1
+                                           *
+ERROR at line 1:
+ORA-00904: "BRANCH_CODE": invalid identifier
+
+
+SQL> insert into account values(1147,'checkings', '08-jan-00','24-mar-17','active',29000,8,'in100','D2
+0044');
+
+1 row created.
+
+Commit complete.
+SQL> select * from customer where customer_id in(select customer_id from account where account_no='%147');
+select * from customer where customer_id in(select customer_id from account where account_no='%147')
+                                                                                             *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> select * from customer where customer_id in(select customer_id from account where account_no='like%147');
+select * from customer where customer_id in(select customer_id from account where account_no='like%147')
+                                                                                             *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> select * from customer where customer_id in(select customer_id from account where account_no=like'%147');
+select * from customer where customer_id in(select customer_id from account where account_no=like'%147')
+                                                                                             *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select * from customer where customer_id in(select customer_id from account where account_no like
+'%147');
+
+no rows selected
+
+SQL> select * from customer;
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ----------
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6
+
+9 rows selected.
+
+SQL> update customer set customer_id='in100' where lname='narayanan';
+
+0 rows updated.
+
+Commit complete.
+SQL> update customer set customer_id='in100' where lname='Narayanan';
+update customer set customer_id='in100' where lname='Narayanan'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (IT2023506070.SYS_C0013292) violated - child record found
+
+     insert into customer('in100','Ram','Raj','R','Delhi','981155333','Teacher','19-aug-00',200.2);
+insert into customer('in100','Ram','Raj','R','Delhi','981155333','Teacher','19-aug-00',200.2)
+                     *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> insert into customer values('in100','Ram','Raj','R','Delhi','981155333','Teacher','19-aug-00',200.2);
+
+1 row created.
+
+Commit complete.
+SQL> select * from customer where customer_id in(select customer_id from account where account_no like'%147');
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION           DOB          BALANCE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ----------
+in100                Ram        Raj        R          Delhi                   981155333 Teacher              19-AUG-00      200.2
+
+SQL> select * from transaction;
+
+TRANSACTION_ID       TRANSACTION_TYPE     TRANSACTI     AMOUNT ACCOUNT_NO
+-------------------- -------------------- --------- ---------- ----------
+A1000                deposit              05-JAN-06      65000       1000
+A1001                withdrawl            06-FEB-07      75000       1001
+A1002                transfer             07-MAR-08      55000       1002
+A1003                transfer             08-APR-09      85000       1003
+A1004                withdrawl            09-MAY-10      75000       1004
+A1005                deposit              10-JUN-11      75000       1005
+A1006                deposit              11-JUL-12      85000       1006
+B2003                withdrawl            18-FEB-19      85000       1007
+B2004                deposit              19-MAR-20      75000       1008
+B2005                transfer             20-APR-21      80000       1009
+
+10 rows selected.
+
+SQL> select * from transaction where account_no in(select account_no from account where account_no bet
+ween 1000 and 1003);
+
+TRANSACTION_ID       TRANSACTION_TYPE     TRANSACTI     AMOUNT ACCOUNT_NO
+-------------------- -------------------- --------- ---------- ----------
+A1000                deposit              05-JAN-06      65000       1000
+A1001                withdrawl            06-FEB-07      75000       1001
+A1002                transfer             07-MAR-08      55000       1002
+A1003                transfer             08-APR-09      85000       1003
+
+SQL> select * from customer where customer_id in(select loan_number from loan where loan_number between 1 and 3);
+select * from customer where customer_id in(select loan_number from loan where loan_number between 1 and 3)
+                             *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> select * from customer where customer_id in(select customer_id from loan where loan_number betwee
+n 1 and 3);
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ----------
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71
+SQL> select * from loan;
+SQL>
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+----------- -------------------- ----------- -------------------- -------------------- --------- --------- -------------------- -------------------- --------------------
+          1 personal                  105000 12%                  24                   06-APR-06 07-MAY-07 active               c110                 c1000
+          2 markage                    10000 2%                   48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+          3 auto                        1000 3%                   48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+          4 auto                        1000 3%                   48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+          5 personal                   25000 12%                  48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+          6 personal                   25000 12%                  7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+          7 markage                    20200 1%                   5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+          8 markage                    20200 1%                   5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+          9 personal                  105000 12%                  10                   06-APR-06 07-MAY-07 active               in064                D20016
+         10 personal                  105000 12%                  10                   06-APR-06 07-MAY-07 active               in065                D20017
+         11 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+----------- -------------------- ----------- -------------------- -------------------- --------- --------- -------------------- -------------------- --------------------
+         12 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+         13 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+         14 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+         15 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+         16 home                      101000 1%                   10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+16 rows selected.
+
+SQL> select * from customer where customer_id in(select customer_id from loan where loan_number between 1 and 5);
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION           DOB          BALANCE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ----------
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71
+op900                           Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71
+
+SQL> select * from customer where customer_id in(select customer_id from loan where loan_number between 1 and 10);
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION           DOB          BALANCE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ----------
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor            08-SEP-92    90000.9
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor            26-OCT-75      25100
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist         06-SEP-98   100000.6
+op900                           Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71
+
+SQL> select * from branch where branch_id in(select branch_id from loan where branch_id='D20021');
+
+no rows selected
+
+SQL> select * from branch;
+
+BRANCH_ID            BRANCH_NAME          BRANCH_CODE          ADDRESS              PHONE_NUMBER     AMOUNT
+-------------------- -------------------- -------------------- -------------------- ------------ ----------
+C1000                Avadi                1                    No:24__lazar nagar     9876543210
+C1001                Ambattur             2                    No:25__shenoy nagar    1122334455
+C1002                Annanur              3                    No:26__ram nagar       2233445566
+D20012               Mambalam             1010                 No:39__kk nagar        1112223334
+D20013               Annanur              2000                 No:36__kalam nagar     2233344455
+D20014               Ambattur             2001                 No:37__sri nagar       3334445556
+D20015               Avadi                2002                 No:38__Ok nagar        3444555666
+D20016                                    2003                                        9999999999
+
+8 rows selected.
+
+SQL> select * from branch where branch_id in(select branch_id from loan where branch_id='D20012');
+
+BRANCH_ID            BRANCH_NAME          BRANCH_CODE          ADDRESS              PHONE_NUMBER     AMOUNT
+-------------------- -------------------- -------------------- -------------------- ------------ ----------
+D20012               Mambalam             1010                 No:39__kk nagar        1112223334
+
+SQL>SQL> select * from account where account_no in(select account_no from transaction where transaction_type='deposit'and 2000>account_no and account_no>1005);
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- -------------------- --------- --------- -------------------- ---------- ----------- -------------------- --------------------
+      1006 savings              07-JUL-01 25-JUL-18 active                     3500           7 in069                D20021
+      1008 savings              08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+
+
+
+
+
+
+
+
+
+
+
+
+
