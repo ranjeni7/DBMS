@@ -1,0 +1,68 @@
+#include<iostream>
+using namespace std;
+class A
+{
+      private:
+          int value;
+      public:
+          A():value(5){}
+          void operator++()
+          {
+               ++value;
+          }
+          void operator--()
+          {
+               --value;
+          }
+          void display()
+          {
+               cout<<value<<endl;
+          }
+};
+int main()
+{
+    A a1,a2;
+    ++a1;
+    --a2;
+    a1.display();
+    a2.display();
+}
+
+6
+4
+
+#include<iostream>
+using namespace std;
+class A 
+{
+      private:
+         int value;
+      public:
+         A():value(5){}
+         int operator++(int)
+         {
+               value++;
+               return value;
+         }
+         int operator--(int)
+         {
+               value--;
+               return value;
+         }
+         void display()
+         {
+             cout<<value<<endl;
+         }
+};
+int main()
+{
+    A a1,a2;
+    a1++;
+    a2--;
+    a1.display();
+    a2.display();
+}
+
+6
+4
+
