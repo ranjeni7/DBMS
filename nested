@@ -1550,7 +1550,1793 @@ ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALA
       1008 savings              08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
 
 
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
 
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\student> sqlplus
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Thu Oct 3 12:57:22 2024
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: it2023506070@orcl
+Enter password:
+Last Successful login time: Fri Sep 27 2024 01:25:46 +05:30
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> select * from customers natural join account_no;
+select * from customers natural join account_no
+                                     *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from customer;
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY
+-------------------- ---------- ---------- ---------- --------------------
+PHONE_NUMBER OCCUPATION           DOB          BALANCE
+------------ -------------------- --------- ----------
+in100                Ram        Raj        R          Delhi
+   981155333 Teacher              19-AUG-00      200.2
+
+c1110                Ranjeni    Chandra    Sekar      Avadi
+  9042855939 Student              07-APR-06    40125.7
+
+da991                Bharathi   Raja       Vel        Cuddalore
+  8899970000 Entreprenuer         05-AUG-05   10115.71
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY
+-------------------- ---------- ---------- ---------- --------------------
+PHONE_NUMBER OCCUPATION           DOB          BALANCE
+------------ -------------------- --------- ----------
+34br                 Hari       Haran      K          Annanur
+  7855534999 Doctor               15-JUL-89   50000.71
+
+da888                Arul       Mozhi      Varman     Sivagangai
+  9999966666 Shop owner           19-DEC-79    10078.9
+
+op900                           Haran      K          Annanur
+  7855534999 Doctor               15-JUL-89   50000.71
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY
+-------------------- ---------- ---------- ---------- --------------------
+PHONE_NUMBER OCCUPATION           DOB          BALANCE
+------------ -------------------- --------- ----------
+dl909                Mohammed   Asil       Mustafa    Alwarpet
+  9045678666 Conductor            08-SEP-92    90000.9
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam
+  9840509942 Professor            26-OCT-75      25100
+
+lm889                Hema       Latha      R          Tirutani
+  9744423555 Chemical Engineer    31-MAR-79      25000
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY
+-------------------- ---------- ---------- ---------- --------------------
+PHONE_NUMBER OCCUPATION           DOB          BALANCE
+------------ -------------------- --------- ----------
+in064                Nithya     Prakash    S          Mumbai
+  9941185593 Data Analist         06-SEP-98   100000.6
+
+
+10 rows selected.
+
+SQL> select * from acccount;
+select * from acccount
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS
+---------- -------------------- --------- --------- --------------------
+   BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- ----------- -------------------- --------------------
+      1000 savings              01-JAN-01 31-DEC-24 active
+    202000           1 c1110                c1000
+
+      1001 checking             02-FEB-02 30-NOV-23 inactive
+      -980           2 34br                 c1002
+
+      1002 savings              03-MAR-03 29-OCT-22 active
+      2200           3 in065                D20013
+
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS
+---------- -------------------- --------- --------- --------------------
+   BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- ----------- -------------------- --------------------
+      1003 checking             04-APR-04 28-NOV-21 inactive
+      1000           4 in066                D20018
+
+      1004 savings              05-MAY-03 27-SEP-20 active
+      3000           5 in067                D20019
+
+      1005 checkings            06-JUN-02 26-AUG-19 inactive
+      9000           6 in068                D20020
+
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS
+---------- -------------------- --------- --------- --------------------
+   BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- ----------- -------------------- --------------------
+      1006 savings              07-JUL-01 25-JUL-18 active
+      3500           7 in069                D20021
+
+      1007 checkings            08-AUG-00 24-JUN-17 inactive
+     29000           8 in070                D20022
+
+      1008 savings              08-AUG-00 24-JUN-17 inactive
+     29000           8 in070                D20022
+
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS
+---------- -------------------- --------- --------- --------------------
+   BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- ----------- -------------------- --------------------
+      1147 checkings            08-JAN-00 24-MAR-17 active
+     29000           8 in100                D20044
+
+
+10 rows selected.
+
+SQL> set linesize 150;
+SQL> select * from transaction natural join account_no;
+select * from transaction natural join account_no
+                                       *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- -------------------- --------- --------- -------------------- ---------- ----------- -------------------- --------------------
+      1000 savings              01-JAN-01 31-DEC-24 active                   202000           1 c1110                c1000
+      1001 checking             02-FEB-02 30-NOV-23 inactive                   -980           2 34br                 c1002
+      1002 savings              03-MAR-03 29-OCT-22 active                     2200           3 in065                D20013
+      1003 checking             04-APR-04 28-NOV-21 inactive                   1000           4 in066                D20018
+      1004 savings              05-MAY-03 27-SEP-20 active                     3000           5 in067                D20019
+      1005 checkings            06-JUN-02 26-AUG-19 inactive                   9000           6 in068                D20020
+      1006 savings              07-JUL-01 25-JUL-18 active                     3500           7 in069                D20021
+      1007 checkings            08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1008 savings              08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1147 checkings            08-JAN-00 24-MAR-17 active                    29000           8 in100                D20044
+
+10 rows selected.
+
+SQL> select * from transaction natural join account;
+
+ACCOUNT_NO TRANSACTION_ID       TRANSACTION_TYPE     TRANSACTI     AMOUNT ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALANCE
+---------- -------------------- -------------------- --------- ---------- -------------------- --------- --------- -------------------- ----------
+BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+----------- -------------------- --------------------
+      1000 A1000                deposit              05-JAN-06      65000 savings              01-JAN-01 31-DEC-24 active                   202000
+          1 c1110                c1000
+
+      1001 A1001                withdrawl            06-FEB-07      75000 checking             02-FEB-02 30-NOV-23 inactive                   -980
+          2 34br                 c1002
+
+      1002 A1002                transfer             07-MAR-08      55000 savings              03-MAR-03 29-OCT-22 active                     2200
+          3 in065                D20013
+
+
+ACCOUNT_NO TRANSACTION_ID       TRANSACTION_TYPE     TRANSACTI     AMOUNT ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALANCE
+---------- -------------------- -------------------- --------- ---------- -------------------- --------- --------- -------------------- ----------
+BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+----------- -------------------- --------------------
+      1003 A1003                transfer             08-APR-09      85000 checking             04-APR-04 28-NOV-21 inactive                   1000
+          4 in066                D20018
+
+      1004 A1004                withdrawl            09-MAY-10      75000 savings              05-MAY-03 27-SEP-20 active                     3000
+          5 in067                D20019
+
+      1005 A1005                deposit              10-JUN-11      75000 checkings            06-JUN-02 26-AUG-19 inactive                   9000
+          6 in068                D20020
+
+
+ACCOUNT_NO TRANSACTION_ID       TRANSACTION_TYPE     TRANSACTI     AMOUNT ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALANCE
+---------- -------------------- -------------------- --------- ---------- -------------------- --------- --------- -------------------- ----------
+BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+----------- -------------------- --------------------
+      1006 A1006                deposit              11-JUL-12      85000 savings              07-JUL-01 25-JUL-18 active                     3500
+          7 in069                D20021
+
+      1007 B2003                withdrawl            18-FEB-19      85000 checkings            08-AUG-00 24-JUN-17 inactive                  29000
+          8 in070                D20022
+
+      1008 B2004                deposit              19-MAR-20      75000 savings              08-AUG-00 24-JUN-17 inactive                  29000
+          8 in070                D20022
+
+
+9 rows selected.
+
+SQL> select * from customer c inner join loan l where c.customer_id=l.customer_id;
+select * from customer c inner join loan l where c.customer_id=l.customer_id
+                                           *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> select * from customer c inner join loan l on c.customer_id=l.customer_id;
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION           DOB          BALANCE LOAN_NUMBER
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- -----------
+LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID
+-------------------- ----------- -------------------- -------------------- --------- --------- -------------------- --------------------
+BRANCH_ID
+--------------------
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71           3
+auto                        1000 3%                   48                   08-JUN-08 09-JUL-09 inactive             34br
+c1002
+
+op900                           Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71           5
+personal                   25000 12%                  48                   08-JAN-10 09-JUL-10 closed               op900
+D20012
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION           DOB          BALANCE LOAN_NUMBER
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- -----------
+LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID
+-------------------- ----------- -------------------- -------------------- --------- --------- -------------------- --------------------
+BRANCH_ID
+--------------------
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor            08-SEP-92    90000.9           6
+personal                   25000 12%                  7                    08-JAN-10 09-JUL-11 inactive             dl909
+D20013
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor            26-OCT-75      25100           7
+markage                    20200 1%                   5                    07-JAN-05 09-JUL-05 closed               dsm90
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION           DOB          BALANCE LOAN_NUMBER
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- -----------
+LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID
+-------------------- ----------- -------------------- -------------------- --------- --------- -------------------- --------------------
+BRANCH_ID
+--------------------
+D20014
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist         06-SEP-98   100000.6           9
+personal                  105000 12%                  10                   06-APR-06 07-MAY-07 active               in064
+D20016
+
+
+SQL> SELECT c.customer_id, c.name, b.branch_id, b.branch_name,
+  2         SUM(l.loan_amount) AS total_loan,
+  3         AVG(l.loan_amount) AS average_loan,
+  4         MIN(l.loan_amount) AS min_loan,
+  5         MAX(l.loan_amount) AS max_loan
+  6  FROM customers c
+  7  JOIN loans l ON c.customer_id = l.customer_id
+  8  JOIN branches b ON c.branch_id = b.branch_id
+  9  WHERE l.loan_amount < 50000
+ 10  GROUP BY c.customer_id, c.name, b.branch_id, b.branch_name;
+JOIN branches b ON c.branch_id = b.branch_id
+     *
+ERROR at line 8:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from branch;
+
+BRANCH_ID            BRANCH_NAME          BRANCH_CODE          ADDRESS              PHONE_NUMBER     AMOUNT
+-------------------- -------------------- -------------------- -------------------- ------------ ----------
+C1000                Avadi                1                    No:24__lazar nagar     9876543210
+C1001                Ambattur             2                    No:25__shenoy nagar    1122334455
+C1002                Annanur              3                    No:26__ram nagar       2233445566
+D20012               Mambalam             1010                 No:39__kk nagar        1112223334
+D20013               Annanur              2000                 No:36__kalam nagar     2233344455
+D20014               Ambattur             2001                 No:37__sri nagar       3334445556
+D20015               Avadi                2002                 No:38__Ok nagar        3444555666
+D20016                                    2003                                        9999999999
+
+8 rows selected.
+
+SQL> select * from branch b;
+
+BRANCH_ID            BRANCH_NAME          BRANCH_CODE          ADDRESS              PHONE_NUMBER     AMOUNT
+-------------------- -------------------- -------------------- -------------------- ------------ ----------
+C1000                Avadi                1                    No:24__lazar nagar     9876543210
+C1001                Ambattur             2                    No:25__shenoy nagar    1122334455
+C1002                Annanur              3                    No:26__ram nagar       2233445566
+D20012               Mambalam             1010                 No:39__kk nagar        1112223334
+D20013               Annanur              2000                 No:36__kalam nagar     2233344455
+D20014               Ambattur             2001                 No:37__sri nagar       3334445556
+D20015               Avadi                2002                 No:38__Ok nagar        3444555666
+D20016                                    2003                                        9999999999
+
+8 rows selected.
+
+SQL> SELECT * from loan l;
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID
+----------- -------------------- ----------- -------------------- -------------------- --------- --------- -------------------- --------------------
+BRANCH_ID
+--------------------
+          1 personal                  105000 12%                  24                   06-APR-06 07-MAY-07 active               c110
+c1000
+
+          2 markage                    10000 2%                   48                   07-MAY-07 08-JUN-08 cancelled            ds991
+c1001
+
+          3 auto                        1000 3%                   48                   08-JUN-08 09-JUL-09 inactive             34br
+c1002
+
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID
+----------- -------------------- ----------- -------------------- -------------------- --------- --------- -------------------- --------------------
+BRANCH_ID
+--------------------
+          4 auto                        1000 3%                   48                   08-JUN-08 09-JUL-09 closed               ds888
+c1003
+
+          5 personal                   25000 12%                  48                   08-JAN-10 09-JUL-10 closed               op900
+D20012
+
+          6 personal                   25000 12%                  7                    08-JAN-10 09-JUL-11 inactive             dl909
+D20013
+
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID
+----------- -------------------- ----------- -------------------- -------------------- --------- --------- -------------------- --------------------
+BRANCH_ID
+--------------------
+          7 markage                    20200 1%                   5                    07-JAN-05 09-JUL-05 closed               dsm90
+D20014
+
+          8 markage                    20200 1%                   5                    07-JAN-05 09-JUL-05 closed               dm889
+D20015
+
+          9 personal                  105000 12%                  10                   06-APR-06 07-MAY-07 active               in064
+D20016
+
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID
+----------- -------------------- ----------- -------------------- -------------------- --------- --------- -------------------- --------------------
+BRANCH_ID
+--------------------
+         10 personal                  105000 12%                  10                   06-APR-06 07-MAY-07 active               in065
+D20017
+
+         11 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in066
+D20018
+
+         12 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in067
+D20019
+
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID
+----------- -------------------- ----------- -------------------- -------------------- --------- --------- -------------------- --------------------
+BRANCH_ID
+--------------------
+         13 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in068
+D20020
+
+         14 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in069
+D20021
+
+         15 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in070
+D20022
+
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID
+----------- -------------------- ----------- -------------------- -------------------- --------- --------- -------------------- --------------------
+BRANCH_ID
+--------------------
+         16 home                      101000 1%                   10                   06-APR-06 07-MAY-07 active               in071
+D20023
+
+
+16 rows selected.
+
+SQL> set linesize 120;
+SQL> SELECT * from loan l;
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE
+----------- -------------------- ----------- -------------------- -------------------- --------- ---------
+STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- -------------------- --------------------
+          1 personal                  105000 12%                  24                   06-APR-06 07-MAY-07
+active               c110                 c1000
+
+          2 markage                    10000 2%                   48                   07-MAY-07 08-JUN-08
+cancelled            ds991                c1001
+
+          3 auto                        1000 3%                   48                   08-JUN-08 09-JUL-09
+inactive             34br                 c1002
+
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE
+----------- -------------------- ----------- -------------------- -------------------- --------- ---------
+STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- -------------------- --------------------
+          4 auto                        1000 3%                   48                   08-JUN-08 09-JUL-09
+closed               ds888                c1003
+
+          5 personal                   25000 12%                  48                   08-JAN-10 09-JUL-10
+closed               op900                D20012
+
+          6 personal                   25000 12%                  7                    08-JAN-10 09-JUL-11
+inactive             dl909                D20013
+
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE
+----------- -------------------- ----------- -------------------- -------------------- --------- ---------
+STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- -------------------- --------------------
+          7 markage                    20200 1%                   5                    07-JAN-05 09-JUL-05
+closed               dsm90                D20014
+
+          8 markage                    20200 1%                   5                    07-JAN-05 09-JUL-05
+closed               dm889                D20015
+
+          9 personal                  105000 12%                  10                   06-APR-06 07-MAY-07
+active               in064                D20016
+
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE
+----------- -------------------- ----------- -------------------- -------------------- --------- ---------
+STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- -------------------- --------------------
+         10 personal                  105000 12%                  10                   06-APR-06 07-MAY-07
+active               in065                D20017
+
+         11 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09
+inactive             in066                D20018
+
+         12 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09
+inactive             in067                D20019
+
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE
+----------- -------------------- ----------- -------------------- -------------------- --------- ---------
+STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- -------------------- --------------------
+         13 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09
+inactive             in068                D20020
+
+         14 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09
+inactive             in069                D20021
+
+         15 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09
+inactive             in070                D20022
+
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE
+----------- -------------------- ----------- -------------------- -------------------- --------- ---------
+STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- -------------------- --------------------
+         16 home                      101000 1%                   10                   06-APR-06 07-MAY-07
+active               in071                D20023
+
+
+16 rows selected.
+
+SQL> set linesize 200;
+SQL> SELECT * from loan l;
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+----------- -------------------- ----------- -------------------- -------------------- --------- --------- -------------------- -------------------- --------------------
+          1 personal                  105000 12%                  24                   06-APR-06 07-MAY-07 active               c110                 c1000
+          2 markage                    10000 2%                   48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+          3 auto                        1000 3%                   48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+          4 auto                        1000 3%                   48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+          5 personal                   25000 12%                  48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+          6 personal                   25000 12%                  7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+          7 markage                    20200 1%                   5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+          8 markage                    20200 1%                   5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+          9 personal                  105000 12%                  10                   06-APR-06 07-MAY-07 active               in064                D20016
+         10 personal                  105000 12%                  10                   06-APR-06 07-MAY-07 active               in065                D20017
+         11 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE        TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+----------- -------------------- ----------- -------------------- -------------------- --------- --------- -------------------- -------------------- --------------------
+         12 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+         13 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+         14 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+         15 auto                        1000 3%                   8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+         16 home                      101000 1%                   10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+16 rows selected.
+
+SQL> select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount)
+l.loaselect c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(
+ c.branch_id=b.branch_id where l.loan_amount<50000 groupby c.customer_id,c.fname, b.branch_id, b.branc
+select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c join loan l on c.customer_id=l.customer_id join laon l on c.branch_id=b.branch_id where l.loan_amount<50000 groupby c.customer_id,c.fname, b.branch_id, b.branch_name
+                                                                                                                                                                                                                                                               *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c join loan l on c.customer_id=l.customer_id join laon l on c.branch_id=b.branch_id where l.loan_amount<50000 group by c.customer_id,c.fname, b.branch_id, b.branch_name;
+select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c join loan l on c.customer_id=l.customer_id join laon l on c.branch_id=b.branch_id where l.loan_amount<50000 group by c.customer_id,c.fname, b.branch_id, b.branch_name
+                                                                                                                                                                                                   *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c join loan l on c.customer_id=l.customer_id join loan l on c.branch_id=b.branch_id where l.loan_amount<50000 group by c.customer_id,c.fname, b.branch_id, b.branch_name;
+select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c join loan l on c.customer_id=l.customer_id join loan l on c.branch_id=b.branch_id where l.loan_amount<50000 group by c.customer_id,c.fname, b.branch_id, b.branch_name
+
+        *
+ERROR at line 1:
+ORA-00904: "B"."BRANCH_ID": invalid identifier
+
+
+SQL> select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c join loan l on c.customer_id=l.customer_id join loan l on b.branch_id=l.branch_id where l.loan_amount<50000 group by c.customer_id,c.fname, b.branch_id, b.branch_name;
+select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c join loan l on c.customer_id=l.customer_id join loan l on b.branch_id=l.branch_id where l.loan_amount<50000 group by c.customer_id,c.fname, b.branch_id, b.branch_name
+                                                                                                                                                                                                             *
+ERROR at line 1:
+ORA-00904: "B"."BRANCH_ID": invalid identifier
+
+
+SQL> select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c and branch b join loan l on c.customer_id=l.customer_id j
+oin loan l on b.branch_id=l.branch_id where l.loan_amount<50000 group by c.customer_id,c.fname, b.branch_id, b.branch_name;
+select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c and branch b join loan l on c.customer_id=l.customer_id join loan l on b.branch_id=l.branch_id where l.loan_amount<50000 group by c.customer_id,c.fname, b.branch_id, b.branch_name
+                                                                                                                                                   *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c,branch b join loan l on c.customer_id=l.customer_id join
+loan l on b.branch_id=l.branch_id where l.loan_amount<50000 group by c.customer_id,c.fname, b.branch_id, b.branch_name;
+select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c,branch b join loan l on c.customer_id=l.customer_id join loan l on b.branch_id=l.branch_id where l.loan_amount<50000 group by c.customer_id,c.fname, b.branch_id, b.branch_name
+                                                                                                                                                                           *
+ERROR at line 1:
+ORA-00904: "C"."CUSTOMER_ID": invalid identifier
+
+
+SQL> select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c join loan l on c.customer_id=l.customer_id join branch b on b.branch_id=l.branch_id where l.loan_amount<50000 group by c.customer_id,c.fname, b.branch_id, b.branch_name;
+
+CUSTOMER_ID          FNAME      BRANCH_ID            BRANCH_NAME          SUM(L.LOAN_AMOUNT) AVG(L.LOAN_AMOUNT) MIN(L.LOAN_AMOUNT) MAX(L.LOAN_AMOUNT)
+-------------------- ---------- -------------------- -------------------- ------------------ ------------------ ------------------ ------------------
+op900                           D20012               Mambalam                          25000              25000              25000              25000
+dl909                Mohammed   D20013               Annanur                           25000              25000              25000              25000
+dsm90                Geetha     D20014               Ambattur                          20200              20200              20200              20200
+
+SQL> select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c join loan l on c.customer_id=l.customer_id join branch b on b.branch_id=l.branch_id where l.loan_amount<50000 ;
+select c.customer_id,c.fname,b.branch_id,b.branch_name,sum(l.loan_amount),avg(l.loan_amount),min(l.loan_amount),max(l.loan_amount) from customer c join loan l on c.customer_id=l.customer_id join branch b on b.branch_id=l.branch_id where l.loan_amount<50000
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> select c.customer_id,c.fname,l.loan_type,avg(loan_amount) from customer c join loan l on c.custom
+er_id=l.customer_id group by c.customer_id, c.fname, l.loan_type having avg(loan_amount)>40000;
+CUSTOMER_ID          FNAME      LOAN_TYPE            AVG(LOAN_AMOUNT)
+-------------------- ---------- -------------------- ----------------
+in064                Nithya     personal                       105000
+
+SQL> select * from loan_payment;
+
+LOAN_PAYMENT_ID      PAYMENT_S PRINCIPAL_AMOUNT INTEREST_AMOUNT PAID_AMOUNT PAID_DATE
+-------------------- --------- ---------------- --------------- ----------- ---------
+AH207                04-APR-05            10000            1000       93000 04-APR-05
+AH301                05-MAY-06            62000            5000       10000 06-MAY-06
+AH302                05-MAY-07            52000            6000        9000 06-MAY-07
+AH303                05-JUN-07            42000            7000        8000 06-JUN-07
+AH304                06-JUN-07            32000            8000        7000 07-JUN-07
+AH305                06-JUN-08            22000            9000        6000 07-JUN-08
+AH201                01-JAN-02            30000            3000       23000 02-JAN-03
+AH202                02-FEB-03            40000            4000       33000 02-FEB-03
+AH203                02-FEB-02           500000            5000       43000 03-FEB-03
+AH204                02-FEB-04           600000            6000       53000 03-FEB-04
+AH205                02-MAR-04           700000            7000       63000 03-MAR-04
+
+LOAN_PAYMENT_ID      PAYMENT_S PRINCIPAL_AMOUNT INTEREST_AMOUNT PAID_AMOUNT PAID_DATE
+-------------------- --------- ---------------- --------------- ----------- ---------
+AH206                03-MAR-04           800000            8000       73000 04-MAR-04
+AH206                03-MAR-05           900000            9000       83000 04-MAR-05
+AH207                04-MAR-24            10000            9000       45000 12-DEC-24
+
+14 rows selected.
+
+SQL> select sum(principal_amount),avg(principal_amount),min(principal_amount),max(principal_amount),su
+ lp.principal_amount<50000 and lp.interest_amount<5000;ount),max(interest_amount) from loan_payment lp
+select sum(principal_amount),avg(principal_amount),min(principal_amount),max(principal_amount),sum(interest_amount),avg(interest_amount),min(interest_amount),max(interest_amount) from loan_payment lpwhere lp.principal_amount<50000 and lp.interest_amount<5000
+                                                                                                                                                                                                             *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select sum(principal_amount),avg(principal_amount),min(principal_amount),max(principal_amount),sum(interest_amount),avg(interest_amount),min(interest_amount),max(interest_amount) from loan_payment lp wher
+e lp.principal_amount<50000 and lp.interest_amount<5000;
+
+SUM(PRINCIPAL_AMOUNT) AVG(PRINCIPAL_AMOUNT) MIN(PRINCIPAL_AMOUNT) MAX(PRINCIPAL_AMOUNT) SUM(INTEREST_AMOUNT) AVG(INTEREST_AMOUNT) MIN(INTEREST_AMOUNT) MAX(INTEREST_AMOUNT)
+--------------------- --------------------- --------------------- --------------------- -------------------- -------------------- -------------------- --------------------
+                80000            26666.6667                 10000                 40000                 8000           2666.66667                 1000                 4000
+
+SQL> select sum(lp.paid_amount),avg(lp.paid_amount) from loan_payment lp where lp.payment_schedule_date=lp.paid_date;
+
+SUM(LP.PAID_AMOUNT) AVG(LP.PAID_AMOUNT)
+------------------- -------------------
+             126000               63000
+
+SQL> select a.account_no,a.account_type,sum(t.amount),count(t.transaction_id),avg(t.amount) from accou
+nt a join transaction t on t.account_no=a.account_no where t.transaction_date > '01-01-2022' and t.tra
+nsaction_date<'31-11-2024' group by a.account_no, a.account_type;
+select a.account_no,a.account_type,sum(t.amount),count(t.transaction_id),avg(t.amount) from account a join transaction t on t.account_no=a.account_no where t.transaction_date > '01-01-2022' and t.transaction_date<'31-11-2024' group by a.account_no, a.account_type
+
+
+         *
+ERROR at line 1:
+ORA-01843: not a valid month
+     select a.account_no,a.account_type,sum(t.amount),count(t.transaction_id),avg(t.amount) from account a join transaction t on t.account_no=a.account_no where t.transaction_date > '01-jan-2022' and t.transaction_date<'31-dec-2024' group by a.account_no, a.account_type;
+SQL>
+no rows selected
+
+SQL> select * from customer c outer join loan l on l.customer_id=c.customer_id;
+select * from customer c outer join loan l on l.customer_id=c.customer_id
+                               *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> select * from customer c full outer join loan l on l.customer_id=c.customer_id;
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+
+   1 personal                   105000 12%
+24                   06-APR-06 07-MAY-07 active               c110                 c1000
+
+
+   2 markage                     10000 2%
+48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           3 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+
+   4 auto                         1000 3%
+48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+
+   8 markage                     20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+
+  10 personal                   105000 12%
+10                   06-APR-06 07-MAY-07 active               in065                D20017
+
+
+  11 auto                         1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+
+  12 auto                         1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+
+  13 auto                         1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+
+
+  14 auto                         1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+
+
+  15 auto                         1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+                                                                                                        16 home                       101000 1%
+10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000
+
+
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71
+
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2
+
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7
+
+
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9
+
+
+
+21 rows selected.
+
+SQL> select * from customer c right outer join loan l on l.customer_id=c.customer_id;
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           3 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+
+  15 auto                         1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+
+  10 personal                   105000 12%
+10                   06-APR-06 07-MAY-07 active               in065                D20017
+
+
+  11 auto                         1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+
+   2 markage                     10000 2%
+48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+
+  12 auto                         1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+
+
+  14 auto                         1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+
+
+   4 auto                         1000 3%
+48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+
+  16 home                       101000 1%
+10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+
+   8 markage                     20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+
+
+  13 auto                         1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+     select * from customer c left outer join loan l on l.customer_id=c.customer_id;
+   1 personal                   105000 12%
+CUSTOMER_ID          FNAMER-06 0MNAME-07   LNAME      CITY    c110         PHONE_NUMBER OCCUPATION           DOB          BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71           3 auto                        1000 3%
+48L> select * fr     08-JUN-08 09-JUL-09 inactiven l on       34br_id=c.customer   c1002
+
+op900                           Haran      K          Annanur                7855534999 Doctor               15-JUL-89   50000.71           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor            08-SEP-92    90000.9           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION           DOB          BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor            26-OCT-75      25100           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist         06-SEP-98   100000.6           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79      25000
+
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION           DOB          BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer         05-AUG-05   10115.71
+
+
+in100                Ram        Raj        R          Delhi                   981155333 Teacher              19-AUG-00      200.2
+
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student              07-APR-06    40125.7
+
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION           DOB          BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner           19-DEC-79    10078.9
+
+
+
+10 rows selected.
+
+SQL> select customer_id from customer union select customer_id from loan;
+
+CUSTOMER_ID
+--------------------
+34br
+c1110
+da888
+da991
+dl909
+dsm90
+in064
+in100
+lm889
+op900
+c110
+
+CUSTOMER_ID
+--------------------
+ds991
+ds888
+dm889
+in065
+in066
+in067
+in068
+in069
+in070
+in071
+
+21 rows selected.
+
+SQL> select customer_id from customer union all select customer_id from loan;
+
+CUSTOMER_ID
+--------------------
+34br
+c1110
+da888
+da991
+dl909
+dsm90
+in064
+in100
+lm889
+op900
+c110
+
+CUSTOMER_ID
+--------------------
+ds991
+34br
+ds888
+op900
+dl909
+dsm90
+dm889
+in064
+in065
+in066
+in067
+
+CUSTOMER_ID
+--------------------
+in068
+in069
+in070
+in071
+
+26 rows selected.
+
+SQL> select customer_id from customer intersect select customer_id from loan;
+
+CUSTOMER_ID
+--------------------
+34br
+dl909
+dsm90
+in064
+op900
+
+SQL> select customer_id from customer except select customer_id from loan;
+
+CUSTOMER_ID
+--------------------
+c1110
+da888
+da991
+in100
+lm889
+
+SQL> select * from customer cross join loan;
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2           1 personal                  105000 12%
+24                   06-APR-06 07-MAY-07 active               c110                 c1000
+
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2           2 markage                    10000 2%
+48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2           3 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2           4 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2           8 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2          10 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in065                D20017
+
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2          11 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2          12 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2          13 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2          14 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2          15 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in100                Ram        Raj        R          Delhi                   981155333 Teacher           19-AUG-00       200.2          16 home                      101000 1%
+10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7           1 personal                  105000 12%
+24                   06-APR-06 07-MAY-07 active               c110                 c1000
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7           2 markage                    10000 2%
+48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7           3 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7           4 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7           8 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7          10 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in065                D20017
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7          11 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7          12 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7          13 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7          14 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7          15 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+
+c1110                Ranjeni    Chandra    Sekar      Avadi                  9042855939 Student           07-APR-06     40125.7          16 home                      101000 1%
+10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71           1 personal                  105000 12%
+24                   06-APR-06 07-MAY-07 active               c110                 c1000
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71           2 markage                    10000 2%
+48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71           3 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71           4 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71           8 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71          10 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in065                D20017
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71          11 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71          12 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71          13 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71          14 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71          15 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+
+da991                Bharathi   Raja       Vel        Cuddalore              8899970000 Entreprenuer      05-AUG-05    10115.71          16 home                      101000 1%
+10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           1 personal                  105000 12%
+24                   06-APR-06 07-MAY-07 active               c110                 c1000
+
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           2 markage                    10000 2%
+48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           3 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           4 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           8 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          10 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in065                D20017
+
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          11 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          12 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          13 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          14 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          15 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+34br                 Hari       Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          16 home                      101000 1%
+10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9           1 personal                  105000 12%
+24                   06-APR-06 07-MAY-07 active               c110                 c1000
+
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9           2 markage                    10000 2%
+48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9           3 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9           4 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9           8 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9          10 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in065                D20017
+
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9          11 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9          12 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9          13 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9          14 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9          15 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+
+da888                Arul       Mozhi      Varman     Sivagangai             9999966666 Shop owner        19-DEC-79     10078.9          16 home                      101000 1%
+10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           1 personal                  105000 12%
+24                   06-APR-06 07-MAY-07 active               c110                 c1000
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           2 markage                    10000 2%
+48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           3 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           4 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           8 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          10 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in065                D20017
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          11 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          12 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          13 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          14 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          15 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+
+op900                           Haran      K          Annanur                7855534999 Doctor            15-JUL-89    50000.71          16 home                      101000 1%
+10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9           1 personal                  105000 12%
+24                   06-APR-06 07-MAY-07 active               c110                 c1000
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9           2 markage                    10000 2%
+48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9           3 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9           4 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9           8 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9          10 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in065                D20017
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9          11 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9          12 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9          13 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9          14 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9          15 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dl909                Mohammed   Asil       Mustafa    Alwarpet               9045678666 Conductor         08-SEP-92     90000.9          16 home                      101000 1%
+10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100           1 personal                  105000 12%
+24                   06-APR-06 07-MAY-07 active               c110                 c1000
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100           2 markage                    10000 2%
+48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100           3 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100           4 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100           8 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100          10 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in065                D20017
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100          11 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100          12 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100          13 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100          14 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100          15 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+
+dsm90                Geetha     Rama       Narayanan  Nungambakkam           9840509942 Professor         26-OCT-75       25100          16 home                      101000 1%
+10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000           1 personal                  105000 12%
+24                   06-APR-06 07-MAY-07 active               c110                 c1000
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000           2 markage                    10000 2%
+48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000           3 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000           4 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000           8 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000          10 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in065                D20017
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000          11 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000          12 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000          13 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000          14 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000          15 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+
+lm889                Hema       Latha      R          Tirutani               9744423555 Chemical Engineer    31-MAR-79            25000          16 home                      101000 1%
+10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6           1 personal                  105000 12%
+24                   06-APR-06 07-MAY-07 active               c110                 c1000
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6           2 markage                    10000 2%
+48                   07-MAY-07 08-JUN-08 cancelled            ds991                c1001
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6           3 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 inactive             34br                 c1002
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6           4 auto                        1000 3%
+48                   08-JUN-08 09-JUL-09 closed               ds888                c1003
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6           5 personal                   25000 12%
+48                   08-JAN-10 09-JUL-10 closed               op900                D20012
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6           6 personal                   25000 12%
+7                    08-JAN-10 09-JUL-11 inactive             dl909                D20013
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6           7 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dsm90                D20014
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6           8 markage                    20200 1%
+5                    07-JAN-05 09-JUL-05 closed               dm889                D20015
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6           9 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in064                D20016
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6          10 personal                  105000 12%
+10                   06-APR-06 07-MAY-07 active               in065                D20017
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6          11 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in066                D20018
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6          12 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in067                D20019
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6          13 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in068                D20020
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6          14 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in069                D20021
+
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6          15 auto                        1000 3%
+8                    08-JUN-08 09-JUL-09 inactive             in070                D20022
+
+
+CUSTOMER_ID          FNAME      MNAME      LNAME      CITY                 PHONE_NUMBER OCCUPATION        DOB   BALANCE LOAN_NUMBER LOAN_TYPE            LOAN_AMOUNT INTEREST_RATE
+-------------------- ---------- ---------- ---------- -------------------- ------------ -------------------- --------- ---------- ----------- -------------------- ----------- --------------------
+TERM                 START_DAT END_DATE  STATUS               CUSTOMER_ID          BRANCH_ID
+-------------------- --------- --------- -------------------- -------------------- --------------------
+in064                Nithya     Prakash    S          Mumbai                 9941185593 Data Analist      06-SEP-98    100000.6          16 home                      101000 1%
+10                   06-APR-06 07-MAY-07 active               in071                D20023
+
+
+160 rows selected.
+
+SQL> select * from borrower;
+
+CUSTOMER_ID          LOAN_NUMBER
+-------------------- -----------
+c1110                          1
+da991                          2
+34br                           3
+da888                          4
+op900                          5
+dl909                          6
+dsm90                          7
+lm889                          8
+in064                          9
+
+9 rows selected.
+
+SQL> select * from depositor;
+
+CUSTOMER_ID          ACCOUNT_NO
+-------------------- ----------
+c1110                      1000
+da991                      1001
+34br                       1002
+da888                      1003
+op900                      1004
+dl909                      1005
+dsm90                      1006
+lm889                      1007
+in064                      1008
+
+9 rows selected.
+
+SQL> delete from borrower where loan_number between 6 and 9;
+
+4 rows deleted.
+
+SQL> select * from borrower;
+
+CUSTOMER_ID          LOAN_NUMBER
+-------------------- -----------
+c1110                          1
+da991                          2
+34br                           3
+da888                          4
+op900                          5
+
+SQL> select * from depositor where customer_id in(select customer_id from borrower);
+
+CUSTOMER_ID          ACCOUNT_NO
+-------------------- ----------
+c1110                      1000
+da991                      1001
+34br                       1002
+da888                      1003
+op900                      1004
+
+SQL>
 
 
 
