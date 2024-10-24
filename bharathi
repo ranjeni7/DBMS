@@ -1,0 +1,656 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\student> sql plus
+Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/hc/core5/http/ParseException
+        at java.lang.Class.getDeclaredConstructors0(Native Method)
+        at java.lang.Class.privateGetDeclaredConstructors(Class.java:2671)
+        at java.lang.Class.getConstructor0(Class.java:3075)
+        at java.lang.Class.newInstance(Class.java:412)
+        at oracle.dbtools.raptor.newscriptrunner.CommandRegistry.addListener(CommandRegistry.java:75)
+        at oracle.dbtools.raptor.newscriptrunner.CommandRegistry.addForAllStmtsListener(CommandRegistry.java:649)
+        at oracle.dbtools.commands.NetCommands.registerCommands(NetCommands.java:28)
+        at oracle.dbtools.raptor.scriptrunner.cmdline.SqlCli.initSqlcl(SqlCli.java:196)
+        at oracle.dbtools.raptor.scriptrunner.cmdline.SqlCli.runSqlcl(SqlCli.java:962)
+        at oracle.dbtools.raptor.scriptrunner.cmdline.SqlCli.main(SqlCli.java:369)
+Caused by: java.lang.ClassNotFoundException: org.apache.hc.core5.http.ParseException
+        at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+        at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:355)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+        ... 10 more
+PS C:\Users\student> sqlplus
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Thu Oct 24 13:34:38 2024
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: it2023506070@orcl
+Enter password:
+Last Successful login time: Fri Oct 18 2024 01:21:57 +05:30
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL>
+SQL> set serveroutput on;
+SQL> CREATE OR REPLACE TRIGGER check_acc_bal
+  2  BEFORE UPDATE on account
+  3  FOR EACH ROW
+  4  begin
+  5       if :new.account_type='savings' and :new.balance<500 then
+  6              :new.balance := :new.balance-200;
+  7       end if;
+  8       if :new.account_type='checkings' and :new.balance<1000 then
+  9              :new.balance := :new.balance-500l
+ 10       end if;
+ 11  end;
+ 12  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> CREATE OR REPLACE TRIGGER check_acc_bal
+  2  BEFORE UPDATE on account
+  3  FOR EACH ROW
+  4  begin
+  5       if :new.account_type='savings' and :new.balance<500 then
+  6              :new.balance := :new.balance-200;
+  7       if :new.account_type='checkings' and :new.balance<1000 then
+  8              :new.balance := :new.balance-500;
+  9       end if;
+ 10  end;
+ 11  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> CREATE OR REPLACE TRIGGER check_acc_bal
+  2  BEFORE UPDATE on account
+  3  FOR EACH ROW
+  4  begin
+  5       if :new.account_type='savings' and :new.balance<500 then
+  6              :new.balance := :new.balance-200;
+  7       end if;
+  8       if :new.account_type='checkings' and :new.balance<1000 then
+  9              :new.balance := :new.balance-500;
+ 10       end if;
+ 11  end;
+ 12  /
+
+Trigger created.
+
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS
+---------- -------------------- --------- --------- --------------------
+   BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- ----------- -------------------- --------------------
+      1000 savings              01-JAN-01 31-DEC-24 active
+    202000           1 c1110                c1000
+
+      1001 checking             02-FEB-02 30-NOV-23 inactive
+      -980           2 34br                 c1002
+
+      1002 savings              03-MAR-03 29-OCT-22 active
+      2200           3 in065                D20013
+
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS
+---------- -------------------- --------- --------- --------------------
+   BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- ----------- -------------------- --------------------
+      1003 checking             04-APR-04 28-NOV-21 inactive
+      1000           4 in066                D20018
+
+      1004 savings              05-MAY-03 27-SEP-20 active
+      3000           5 in067                D20019
+
+      1005 checkings            06-JUN-02 26-AUG-19 inactive
+      9000           6 in068                D20020
+
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS
+---------- -------------------- --------- --------- --------------------
+   BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- ----------- -------------------- --------------------
+      1006 savings              07-JUL-01 25-JUL-18 active
+      3500           7 in069                D20021
+
+      1007 checkings            08-AUG-00 24-JUN-17 inactive
+     29000           8 in070                D20022
+
+      1008 savings              08-AUG-00 24-JUN-17 inactive
+     29000           8 in070                D20022
+
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS
+---------- -------------------- --------- --------- --------------------
+   BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- ----------- -------------------- --------------------
+      1147 checkings            08-JAN-00 24-MAR-17 active
+     29000           8 in100                D20044
+
+
+10 rows selected.
+
+SQL> set linesize 150;
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- -------------------- --------- --------- -------------------- ---------- ----------- -------------------- --------------------
+      1000 savings              01-JAN-01 31-DEC-24 active                   202000           1 c1110                c1000
+      1001 checking             02-FEB-02 30-NOV-23 inactive                   -980           2 34br                 c1002
+      1002 savings              03-MAR-03 29-OCT-22 active                     2200           3 in065                D20013
+      1003 checking             04-APR-04 28-NOV-21 inactive                   1000           4 in066                D20018
+      1004 savings              05-MAY-03 27-SEP-20 active                     3000           5 in067                D20019
+      1005 checkings            06-JUN-02 26-AUG-19 inactive                   9000           6 in068                D20020
+      1006 savings              07-JUL-01 25-JUL-18 active                     3500           7 in069                D20021
+      1007 checkings            08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1008 savings              08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1147 checkings            08-JAN-00 24-MAR-17 active                    29000           8 in100                D20044
+
+10 rows selected.
+
+SQL> update account set balance='200' where account_no=1000;
+
+1 row updated.
+
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- -------------------- --------- --------- -------------------- ---------- ----------- -------------------- --------------------
+      1000 savings              01-JAN-01 31-DEC-24 active                        0           1 c1110                c1000
+      1001 checking             02-FEB-02 30-NOV-23 inactive                   -980           2 34br                 c1002
+      1002 savings              03-MAR-03 29-OCT-22 active                     2200           3 in065                D20013
+      1003 checking             04-APR-04 28-NOV-21 inactive                   1000           4 in066                D20018
+      1004 savings              05-MAY-03 27-SEP-20 active                     3000           5 in067                D20019
+      1005 checkings            06-JUN-02 26-AUG-19 inactive                   9000           6 in068                D20020
+      1006 savings              07-JUL-01 25-JUL-18 active                     3500           7 in069                D20021
+      1007 checkings            08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1008 savings              08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1147 checkings            08-JAN-00 24-MAR-17 active                    29000           8 in100                D20044
+
+10 rows selected.
+
+SQL> update account set balance='500' where account_no=1000;
+
+1 row updated.
+
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- -------------------- --------- --------- -------------------- ---------- ----------- -------------------- --------------------
+      1000 savings              01-JAN-01 31-DEC-24 active                      500           1 c1110                c1000
+      1001 checking             02-FEB-02 30-NOV-23 inactive                   -980           2 34br                 c1002
+      1002 savings              03-MAR-03 29-OCT-22 active                     2200           3 in065                D20013
+      1003 checking             04-APR-04 28-NOV-21 inactive                   1000           4 in066                D20018
+      1004 savings              05-MAY-03 27-SEP-20 active                     3000           5 in067                D20019
+      1005 checkings            06-JUN-02 26-AUG-19 inactive                   9000           6 in068                D20020
+      1006 savings              07-JUL-01 25-JUL-18 active                     3500           7 in069                D20021
+      1007 checkings            08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1008 savings              08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1147 checkings            08-JAN-00 24-MAR-17 active                    29000           8 in100                D20044
+
+10 rows selected.
+
+SQL> update account set balance='900' where account_no=1001;
+
+1 row updated.
+
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- -------------------- --------- --------- -------------------- ---------- ----------- -------------------- --------------------
+      1000 savings              01-JAN-01 31-DEC-24 active                      500           1 c1110                c1000
+      1001 checking             02-FEB-02 30-NOV-23 inactive                    900           2 34br                 c1002
+      1002 savings              03-MAR-03 29-OCT-22 active                     2200           3 in065                D20013
+      1003 checking             04-APR-04 28-NOV-21 inactive                   1000           4 in066                D20018
+      1004 savings              05-MAY-03 27-SEP-20 active                     3000           5 in067                D20019
+      1005 checkings            06-JUN-02 26-AUG-19 inactive                   9000           6 in068                D20020
+      1006 savings              07-JUL-01 25-JUL-18 active                     3500           7 in069                D20021
+      1007 checkings            08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1008 savings              08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1147 checkings            08-JAN-00 24-MAR-17 active                    29000           8 in100                D20044
+
+10 rows selected.
+
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- -------------------- --------- --------- -------------------- ---------- ----------- -------------------- --------------------
+      1000 savings              01-JAN-01 31-DEC-24 active                      500           1 c1110                c1000
+      1001 checking             02-FEB-02 30-NOV-23 inactive                    900           2 34br                 c1002
+      1002 savings              03-MAR-03 29-OCT-22 active                     2200           3 in065                D20013
+      1003 checking             04-APR-04 28-NOV-21 inactive                   1000           4 in066                D20018
+      1004 savings              05-MAY-03 27-SEP-20 active                     3000           5 in067                D20019
+      1005 checkings            06-JUN-02 26-AUG-19 inactive                   9000           6 in068                D20020
+      1006 savings              07-JUL-01 25-JUL-18 active                     3500           7 in069                D20021
+      1007 checkings            08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1008 savings              08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1147 checkings            08-JAN-00 24-MAR-17 active                    29000           8 in100                D20044
+
+10 rows selected.
+
+SQL> update account set account_type='checkings' where account_no='1001';
+
+1 row updated.
+
+SQL> update account set account_type='checkings' where account_no='1003';
+
+1 row updated.
+
+SQL> select * from account;
+
+ACCOUNT_NO ACCOUNT_TYPE         DATE_OPEN DATE_CLOS AMOUNT_STATUS           BALANCE BRANCH_CODE CUSTOMER_ID          BRANCH_ID
+---------- -------------------- --------- --------- -------------------- ---------- ----------- -------------------- --------------------
+      1000 savings              01-JAN-01 31-DEC-24 active                      500           1 c1110                c1000
+      1001 checkings            02-FEB-02 30-NOV-23 inactive                    400           2 34br                 c1002
+      1002 savings              03-MAR-03 29-OCT-22 active                     2200           3 in065                D20013
+      1003 checkings            04-APR-04 28-NOV-21 inactive                   1000           4 in066                D20018
+      1004 savings              05-MAY-03 27-SEP-20 active                     3000           5 in067                D20019
+      1005 checkings            06-JUN-02 26-AUG-19 inactive                   9000           6 in068                D20020
+      1006 savings              07-JUL-01 25-JUL-18 active                     3500           7 in069                D20021
+      1007 checkings            08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1008 savings              08-AUG-00 24-JUN-17 inactive                  29000           8 in070                D20022
+      1147 checkings            08-JAN-00 24-MAR-17 active                    29000           8 in100                D20044
+
+10 rows selected.
+
+SQL> alter table account add(customer_type varchar2(10));
+
+Table altered.
+
+SQL> desc account;
+ Name                                                                                Null?    Type
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ACCOUNT_NO                                                                          NOT NULL NUMBER(10)
+ ACCOUNT_TYPE                                                                                 VARCHAR2(20)
+ DATE_OPEN                                                                                    DATE
+ DATE_CLOSE                                                                                   DATE
+ AMOUNT_STATUS                                                                                VARCHAR2(20)
+ BALANCE                                                                                      NUMBER(10)
+ BRANCH_CODE                                                                                  NUMBER(10)
+ CUSTOMER_ID                                                                                  VARCHAR2(20)
+ BRANCH_ID                                                                                    VARCHAR2(20)
+ CUSTOMER_TYPE                                                                                VARCHAR2(10)
+
+SQL> create or replace trigger chech_cust_type
+  2  before update on transaction
+  3  /
+before update on transaction
+                           *
+ERROR at line 2:
+ORA-04079: invalid trigger specification
+
+
+SQL> alter table account drop column customer_type;
+
+Table altered.
+
+SQL> desc account;
+ Name                                                                                Null?    Type
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ACCOUNT_NO                                                                          NOT NULL NUMBER(10)
+ ACCOUNT_TYPE                                                                                 VARCHAR2(20)
+ DATE_OPEN                                                                                    DATE
+ DATE_CLOSE                                                                                   DATE
+ AMOUNT_STATUS                                                                                VARCHAR2(20)
+ BALANCE                                                                                      NUMBER(10)
+ BRANCH_CODE                                                                                  NUMBER(10)
+ CUSTOMER_ID                                                                                  VARCHAR2(20)
+ BRANCH_ID                                                                                    VARCHAR2(20)
+
+SQL> alter table transaction drop column customer_type;
+alter table transaction drop column customer_type
+                                    *
+ERROR at line 1:
+ORA-00904: "CUSTOMER_TYPE": invalid identifier
+
+
+SQL> create or replace trigger check_cust_type
+  2  before update on transaction
+  3  for each row
+  4  begin
+  5     if :new.amount>10000 then
+  6         insert into transaction ('customer_type')values('VALUABLE');
+  7     end if;
+  8     if :new.amount<10000 then
+  9         insert into transaction('customer_type')values('NORMAL');
+ 10     end if;
+ 11  end;
+ 12  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> create or replace trigger check_cust_type
+  2  before update on transaction
+  3  begin
+  4     if :new.amount<10000 then
+  5         :new.customer_type := 'VALUABLE';
+  6     end if;
+  7     if :new.amount<10000 then
+  8        :new.customer_type := 'NORMAL';
+  9     end if;
+ 10  end;
+ 11  /
+create or replace trigger check_cust_type
+                          *
+ERROR at line 1:
+ORA-04082: NEW or OLD references not allowed in table level triggers
+
+
+SQL> DROP TRIGGER check_acc_bal;
+
+Trigger dropped.
+
+SQL> create or replace trigger check_cust_type
+  2  before update on transaction
+  3  begin
+  4     if :new.amount>10000 then
+  5         :new.customer_type := 'VALUABLE';
+  6     end if;
+  7     if :new.amount<10000 then
+  8        :new.customer_type := 'NORMAL';
+  9     end if;
+ 10  end;
+ 11  /
+create or replace trigger check_cust_type
+                          *
+ERROR at line 1:
+ORA-04082: NEW or OLD references not allowed in table level triggers
+
+
+SQL> create or replace trigger cust_type
+  2  before update on transaction
+  3  begin
+  4     if :new.amount>10000 then
+  5        :new.customer_type := 'VALUABLE';
+  6     end if;
+  7     if :new.amount<10000 then
+  8        :new.customer_type := 'NORMAL';
+  9     end if;
+ 10  end;
+ 11  /
+create or replace trigger cust_type
+                          *
+ERROR at line 1:
+ORA-04082: NEW or OLD references not allowed in table level triggers
+
+
+SQL> create or replace trigger transaction_table
+  2  before update on transaction
+  3  begin
+  4     if :new.amount>10000 then
+  5        :new.customer_type := 'VALUABLE';
+  6     end if;
+  7     if :new.amount<10000 then
+  8        :new.customer_type := 'NORMAL';
+  9     end if;
+ 10  end;
+ 11  /
+create or replace trigger transaction_table
+                          *
+ERROR at line 1:
+ORA-04082: NEW or OLD references not allowed in table level triggers
+
+
+SQL> select * from transaction;
+
+TRANSACTION_ID       TRANSACTION_TYPE     TRANSACTI     AMOUNT ACCOUNT_NO
+-------------------- -------------------- --------- ---------- ----------
+A1000                deposit              05-JAN-06      65000       1000
+A1001                withdrawl            06-FEB-07      75000       1001
+A1002                transfer             07-MAR-08      55000       1002
+A1003                transfer             08-APR-09      85000       1003
+A1004                withdrawl            09-MAY-10      75000       1004
+A1005                deposit              10-JUN-11      75000       1005
+A1006                deposit              11-JUL-12      85000       1006
+B2003                withdrawl            18-FEB-19      85000       1007
+B2004                deposit              19-MAR-20      75000       1008
+B2005                transfer             20-APR-21      80000       1009
+
+10 rows selected.
+
+SQL> desc transaction;
+ Name                                                                                Null?    Type
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ TRANSACTION_ID                                                                      NOT NULL VARCHAR2(20)
+ TRANSACTION_TYPE                                                                             VARCHAR2(20)
+ TRANSACTION_DATE                                                                             DATE
+ AMOUNT                                                                                       NUMBER(10,2)
+ ACCOUNT_NO                                                                                   NUMBER(10)
+
+SQL> alter table transaction add(customer_type varchar2(10));
+
+Table altered.
+
+SQL> desc transaction;
+ Name                                                                                Null?    Type
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ TRANSACTION_ID                                                                      NOT NULL VARCHAR2(20)
+ TRANSACTION_TYPE                                                                             VARCHAR2(20)
+ TRANSACTION_DATE                                                                             DATE
+ AMOUNT                                                                                       NUMBER(10,2)
+ ACCOUNT_NO                                                                                   NUMBER(10)
+ CUSTOMER_TYPE                                                                                VARCHAR2(10)
+
+SQL> select * from transaction;
+
+TRANSACTION_ID       TRANSACTION_TYPE     TRANSACTI     AMOUNT ACCOUNT_NO CUSTOMER_T
+-------------------- -------------------- --------- ---------- ---------- ----------
+A1000                deposit              05-JAN-06      65000       1000
+A1001                withdrawl            06-FEB-07      75000       1001
+A1002                transfer             07-MAR-08      55000       1002
+A1003                transfer             08-APR-09      85000       1003
+A1004                withdrawl            09-MAY-10      75000       1004
+A1005                deposit              10-JUN-11      75000       1005
+A1006                deposit              11-JUL-12      85000       1006
+B2003                withdrawl            18-FEB-19      85000       1007
+B2004                deposit              19-MAR-20      75000       1008
+B2005                transfer             20-APR-21      80000       1009
+
+10 rows selected.
+
+SQL> update transaction set amount='65000' where transaction_id='A1000';
+update transaction set amount='65000' where transaction_id='A1000'
+       *
+ERROR at line 1:
+ORA-04098: trigger 'IT2023506070.CHECK_CUST_TYPE' is invalid and failed re-validation
+
+
+SQL> drop trigger cust_type;
+drop trigger cust_type
+*
+ERROR at line 1:
+ORA-04080: trigger 'CUST_TYPE' does not exist
+
+
+SQL> drop trigger check_cust_type;
+
+Trigger dropped.
+
+SQL> drop trigger transaction_table;
+drop trigger transaction_table
+*
+ERROR at line 1:
+ORA-04080: trigger 'TRANSACTION_TABLE' does not exist
+
+
+SQL> drop trigger check_cust_type;
+drop trigger check_cust_type
+*
+ERROR at line 1:
+ORA-04080: trigger 'CHECK_CUST_TYPE' does not exist
+
+
+SQL> create or replace trigger check_data
+  2  before update on transaction
+  3  for each row
+  4  begin
+  5      if :new.amount >10000 then
+  6          :new.customer_type := 'VALUABLE';
+  7      end if;
+  8      if :new.amount<10000 then
+  9          :new.customer_type := 'NORMAL';
+ 10      end if;
+ 11  end;
+ 12  /
+
+Trigger created.
+
+SQL> select * from transaction;
+
+TRANSACTION_ID       TRANSACTION_TYPE     TRANSACTI     AMOUNT ACCOUNT_NO CUSTOMER_T
+-------------------- -------------------- --------- ---------- ---------- ----------
+A1000                deposit              05-JAN-06      65000       1000
+A1001                withdrawl            06-FEB-07      75000       1001
+A1002                transfer             07-MAR-08      55000       1002
+A1003                transfer             08-APR-09      85000       1003
+A1004                withdrawl            09-MAY-10      75000       1004
+A1005                deposit              10-JUN-11      75000       1005
+A1006                deposit              11-JUL-12      85000       1006
+B2003                withdrawl            18-FEB-19      85000       1007
+B2004                deposit              19-MAR-20      75000       1008
+B2005                transfer             20-APR-21      80000       1009
+
+10 rows selected.
+
+SQL> update transaction set amount=65000 where transaction_id='A1000';
+
+1 row updated.
+
+SQL> select * from transaction;
+
+TRANSACTION_ID       TRANSACTION_TYPE     TRANSACTI     AMOUNT ACCOUNT_NO CUSTOMER_T
+-------------------- -------------------- --------- ---------- ---------- ----------
+A1000                deposit              05-JAN-06      65000       1000 VALUABLE
+A1001                withdrawl            06-FEB-07      75000       1001
+A1002                transfer             07-MAR-08      55000       1002
+A1003                transfer             08-APR-09      85000       1003
+A1004                withdrawl            09-MAY-10      75000       1004
+A1005                deposit              10-JUN-11      75000       1005
+A1006                deposit              11-JUL-12      85000       1006
+B2003                withdrawl            18-FEB-19      85000       1007
+B2004                deposit              19-MAR-20      75000       1008
+B2005                transfer             20-APR-21      80000       1009
+
+10 rows selected.
+
+SQL> drop trigger check_data;
+
+Trigger dropped.
+
+SQL> create or replace trigger data
+  2  before update on transaction
+  3  for each row
+  4  begin
+  5      if :new.amount >10000 then
+  6          :new.customer_type := 'VALUABLE';
+  7      end if;
+  8      if :new.amount<10000 then
+  9  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> drop trigger data;
+
+Trigger dropped.
+
+SQL> create or replace trigger condition
+  2  before update on transaction
+  3  for each row
+  4  begin
+  5      if :new.amount>10000 and transaction_type='deposit' then
+  6          :new.customer_type := 'VALUABLE';
+  7      end if;
+  8      if :new.amount<10000 and transaction_type='deposit' then
+  9         :new.customer_type := 'NORMAL';
+ 10      end if;
+ 11  end;
+ 12  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> update transaction set amount=75000 where transaction_id='A1001';
+update transaction set amount=75000 where transaction_id='A1001'
+       *
+ERROR at line 1:
+ORA-04098: trigger 'IT2023506070.CONDITION' is invalid and failed re-validation
+
+
+SQL> create or replace trigger condition
+  2  before update on transaction
+  3  for each row
+  4  begin
+  5      if :new.amount<10000 and :new.transaction_type='deposit' then
+  6          :new.customer_type := 'VALUABLE';
+  7      end if;
+  8      if :new.amount<10000 and :new.transaction_type='deposit' then
+  9         :new.customer_type := 'NORMAL';
+ 10      end if;
+ 11  end;
+ 12  /
+
+Trigger created.
+
+SQL> create or replace trigger condition
+  2  before update on transaction
+  3  for each row
+  4  begin
+  5      if :new.amount>10000 and :new.transaction_type='deposit' then
+  6          :new.customer_type := 'VALUABLE';
+  7      end if;
+  8      if :new.amount<10000 and :new.transaction_type='deposit' then
+  9         :new.customer_type := 'NORMAL';
+ 10      end if;
+ 11  end;
+ 12  /
+
+Trigger created.
+
+SQL> update transaction set amount=75000 where transaction_id='A1001';
+
+1 row updated.
+
+SQL> select * from transaction;
+
+TRANSACTION_ID       TRANSACTION_TYPE     TRANSACTI     AMOUNT ACCOUNT_NO CUSTOMER_T
+-------------------- -------------------- --------- ---------- ---------- ----------
+A1000                deposit              05-JAN-06      65000       1000 VALUABLE
+A1001                withdrawl            06-FEB-07      75000       1001
+A1002                transfer             07-MAR-08      55000       1002
+A1003                transfer             08-APR-09      85000       1003
+A1004                withdrawl            09-MAY-10      75000       1004
+A1005                deposit              10-JUN-11      75000       1005
+A1006                deposit              11-JUL-12      85000       1006
+B2003                withdrawl            18-FEB-19      85000       1007
+B2004                deposit              19-MAR-20      75000       1008
+B2005                transfer             20-APR-21      80000       1009
+
+10 rows selected.
+
+SQL> create or replace trigger control
+  2  before delete on transaction
+  3  for each row
+  4  begin
+  5       if :new.amount>10000 and :new.transaction_type='deposit' then
+  6            :new.customer_type := 'VALUABLE';
+  7
+  8       end if;
+  9       if :new.amount<10000 and :new.transaction_type='deposit' then
+ 10             :new.customer_type := 'NORMAL';
+ 11       end if;
+ 12  end;
+ 13  /
+create or replace trigger control
+                          *
+ERROR at line 1:
+ORA-04084: cannot change NEW values for this trigger type
+
+
+SQL>
+
+
